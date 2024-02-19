@@ -38,12 +38,12 @@ features                                  :
 
   - title                                 : Add new photo spots
     description                           : Easily create a photo spot when you discover a new photography location. You can also share images right from your gallery and create a photospot. Turn your existing gallery into a treasure store of favourite locations to take photos.
-    fontawesome_icon_name                 : magic
+    fontawesome_icon_name                 : map-marked
     
  
   - title                                 : Manage photo spots
     description                           : With the tags feature, location information and notes, you can easily add all the information you need for your next visit. Should you bring a 50mm lens next time? how about a wide-angle lens for an establishing shot. Photospots, makes it easy to add all the helpful tips you need to make the best of your photo walks.
-    fontawesome_icon_name                 : play-circle
+    fontawesome_icon_name                 : edit
 
   - title                                 : Previews and navigation directions
     description                           : Plan your next visit to one of your favourite locations with the navigation directions and preview features. They allow you get a reminder of what the place looks like and see the best route to the get there.
@@ -51,7 +51,7 @@ features                                  :
 
   - title                                 : Search
     description                           : The combination of tags, locations information and notes make it easy to find exactly the spot you're looking for. The best part is all this information is curated by you and fits your style of photography.
-    fontawesome_icon_name                 : magnifying-glass
+    fontawesome_icon_name                 : search-location
 
   - title                                 : Sync across devices
     description                           : All your photo spots are securely stored in your private icloud and available on all your iOS devices.
