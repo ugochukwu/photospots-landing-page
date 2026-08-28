@@ -1,4 +1,17 @@
-.bundle
-.sass-cache
-_site
-Gemfile.lock
+# Agent kit — required entries.
+.secrets/
+.beads/
+.claude/worktrees/
+.claude/settings.local.json
+
+# Node (html-validate) — package-lock.json is committed on purpose, so npm ci is reproducible
+node_modules/
+
+# macOS
+.DS_Store
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/proxieddb/
