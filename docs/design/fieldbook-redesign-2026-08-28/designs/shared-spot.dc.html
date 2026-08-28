@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Space+Mono:wght@400;700&amp;display=swap">
+  <style>
+    body { margin: 0; background: #F6F2EA; }
+    a { color: #4F489B; text-decoration: none; }
+    a:hover { color: #665DBE; }
+  </style>
+</helmet>
+<div style="min-height: 100vh; background: #F6F2EA; color: #2A2620; font-family: 'Space Grotesk', system-ui, sans-serif; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.13; pointer-events: none;">
+    <g stroke="#96908A" stroke-width="1.5" fill="none" opacity="0.55">
+      <path d="M -60 180 C 400 140 760 220 1500 160"></path>
+      <path d="M -60 240 C 400 192 760 288 1500 216"></path>
+      <path d="M -60 300 C 400 244 760 356 1500 272"></path>
+      <path d="M -60 700 C 460 744 830 656 1500 722"></path>
+      <path d="M -60 770 C 460 808 830 732 1500 789"></path>
+    </g>
+  </svg>
+
+  <header style="position: relative; max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 26px 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+    <a href="photospots-landing.dc.html" style="display: flex; align-items: center; gap: 12px; color: #2A2620;">
+      <img src="assets/app-icon.png" alt="Fotospots app icon" style="width: 34px; height: 34px; border-radius: 8px; display: block;">
+      <span style="font-weight: 700; font-size: 20px; letter-spacing: -0.01em;">Fotospots</span>
+      <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #96908A; margin-left: 6px;">PHOTO FIELDBOOK</span>
+    </a>
+    <div style="display: flex; gap: 10px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em;">
+      <button onClick="{{ setEn }}" style="background: none; border: none; padding: 2px 0; cursor: pointer; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: {{ enColor }}; font-weight: 700; border-bottom: 1.5px solid {{ enBorder }};">EN</button>
+      <button onClick="{{ setDe }}" style="background: none; border: none; padding: 2px 0; cursor: pointer; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: {{ deColor }}; font-weight: 700; border-bottom: 1.5px solid {{ deBorder }};">DE</button>
+    </div>
+  </header>
+
+  <main style="position: relative; flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 32px 90px;">
+    <sc-if value="{{ en }}" hint-placeholder-val="{{ true }}">
+      <div data-screen-label="Shared spot EN" style="max-width: 640px; text-align: center;">
+        <div style="font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.2em; color: #4F489B;">A SPOT, HANDED TO YOU</div>
+        <div style="width: 180px; height: 1px; background: #DCD5C7; margin: 30px auto 38px;"></div>
+        <h1 style="font-weight: 700; font-size: 56px; line-height: 1.02; letter-spacing: -0.035em; margin: 0; text-wrap: pretty;">Someone handed you a place.</h1>
+        <p style="font-size: 18px; line-height: 1.65; color: #6B655C; margin: 28px 0 0;">This link carries one spot from someone's fieldbook, shared with you alone. Open it on an iPhone or iPad with Fotospots installed, and the place lands on your map.</p>
+        <div style="display: flex; justify-content: center; margin-top: 38px;">
+          <a href="https://apps.apple.com/app/id6466506171" style="background: #4F489B; color: #F6F2EA; font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 6px;" style-hover="background: #5E55B5; color: #F6F2EA;">Get Fotospots on the App Store</a>
+        </div>
+        <p style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #96908A; margin: 44px 0 0;">// this page never sees the spot. the handoff happens on your device.</p>
+      </div>
+    </sc-if>
+    <sc-if value="{{ de }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="Shared spot DE" style="max-width: 640px; text-align: center;">
+        <div style="font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.2em; color: #4F489B;">EIN ORT, IN DIE HAND GEGEBEN</div>
+        <div style="width: 180px; height: 1px; background: #DCD5C7; margin: 30px auto 38px;"></div>
+        <h1 style="font-weight: 700; font-size: 56px; line-height: 1.02; letter-spacing: -0.035em; margin: 0; text-wrap: pretty;">Jemand gibt dir einen Ort in die Hand.</h1>
+        <p style="font-size: 18px; line-height: 1.65; color: #6B655C; margin: 28px 0 0;">Dieser Link trägt einen Fotospot aus einem Feldbuch, geteilt nur mit dir. Öffne ihn auf einem iPhone oder iPad mit Fotospots, und der Ort landet auf deiner Karte.</p>
+        <div style="display: flex; justify-content: center; margin-top: 38px;">
+          <a href="https://apps.apple.com/de/app/id6466506171" style="background: #4F489B; color: #F6F2EA; font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 6px;" style-hover="background: #5E55B5; color: #F6F2EA;">Fotospots im App Store laden</a>
+        </div>
+        <p style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.1em; color: #96908A; margin: 44px 0 0;">// diese seite sieht den ort nie. die übergabe passiert auf deinem gerät.</p>
+      </div>
+    </sc-if>
+  </main>
+
+  <footer style="position: relative; max-width: 1200px; width: 100%; box-sizing: border-box; margin: 0 auto; padding: 0 64px 40px;">
+    <div style="height: 1px; background: #DCD5C7;"></div>
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 26px;">
+      <a href="https://mugoworks.com" style="display: flex; align-items: center; gap: 10px; color: #96908A;" style-hover="color: #4F489B;">
+        <img src="assets/mark-on-light.svg" alt="mugo works mark" style="width: 20px; height: 20px; display: block;">
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.16em;">A MUGO WORKS PRODUCT</span>
+      </a>
+      <a href="privacy-policy.dc.html" style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: #96908A;" style-hover="color: #4F489B;">PRIVACY POLICY</a>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    let saved = null;
+    try { saved = localStorage.getItem('photospots-lang'); } catch (e) {}
+    this.state = { lang: saved === 'de' || saved === 'en' ? saved : 'en' };
+  }
+  setLang(lang) {
+    this.setState({ lang });
+    try { localStorage.setItem('photospots-lang', lang); } catch (e) {}
+  }
+  renderVals() {
+    const de = this.state.lang === 'de';
+    return {
+      en: !de, de,
+      setEn: () => this.setLang('en'),
+      setDe: () => this.setLang('de'),
+      enColor: !de ? '#4F489B' : '#96908A',
+      deColor: de ? '#4F489B' : '#96908A',
+      enBorder: !de ? '#4F489B' : 'transparent',
+      deBorder: de ? '#4F489B' : 'transparent',
+    };
+  }
+}
+</script>
+</body>
+</html>

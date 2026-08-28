@@ -43,6 +43,12 @@ def find_html_files():
     for path in sorted(REPO.rglob("*.html")):
         if any(part in EXCLUDE_DIR_PARTS for part in path.relative_to(REPO).parts):
             continue
+        # Design-Component prototype files (*.dc.html) under docs/design/ are frozen
+        # references for a design brief, not shipped pages. They intentionally hold
+        # `href="Photospots Landing.dc.html"`-style link stubs the shipped site does
+        # not carry, and html-validate skips them for the same reason.
+        if path.name.endswith(".dc.html"):
+            continue
         yield path
 
 

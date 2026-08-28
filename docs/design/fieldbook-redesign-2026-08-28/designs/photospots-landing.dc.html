@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Space+Mono:wght@400;700&amp;display=swap">
+  <style>
+    body { margin: 0; background: #F6F2EA; }
+    a { color: #4F489B; text-decoration: none; }
+    a:hover { color: #665DBE; }
+  </style>
+</helmet>
+<div style="min-height: 100vh; background: #F6F2EA; color: #2A2620; font-family: 'Space Grotesk', system-ui, sans-serif;">
+
+  <sc-if value="{{ en }}" hint-placeholder-val="{{ true }}">
+  <div data-screen-label="Landing EN">
+    <header style="max-width: 1200px; margin: 0 auto; padding: 26px 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="assets/app-icon.png" alt="Fotospots app icon" style="width: 34px; height: 34px; border-radius: 8px; display: block;">
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <div style="display: flex; align-items: baseline; gap: 10px;">
+            <span style="font-weight: 700; font-size: 20px; letter-spacing: -0.01em;">Fotospots</span>
+            <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #96908A;">PHOTO FIELDBOOK</span>
+          </div>
+          <a href="https://mugoworks.com" style="display: flex; align-items: center; gap: 8px; color: #96908A;" style-hover="color: #4F489B;">
+            <img src="assets/mark-on-light.svg" alt="mugo works mark" style="width: 13px; height: 13px; display: block;">
+            <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em;">BY MUGO WORKS</span>
+          </a>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px;">
+        <div style="display: flex; gap: 10px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em;">
+          <button onClick="{{ setEn }}" style="background: none; border: none; padding: 2px 0; cursor: pointer; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: #4F489B; font-weight: 700; border-bottom: 1.5px solid #4F489B;">EN</button>
+          <button onClick="{{ setDe }}" style="background: none; border: none; padding: 2px 0; cursor: pointer; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: #96908A; border-bottom: 1.5px solid transparent;" style-hover="color: #4F489B;">DE</button>
+        </div>
+        <a href="https://apps.apple.com/app/id6466506171" style="background: #4F489B; color: #F6F2EA; font-weight: 700; font-size: 14px; padding: 10px 20px; border-radius: 6px;" style-hover="background: #5E55B5; color: #F6F2EA;">Get the app</a>
+      </div>
+    </header>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 64px;"><div style="height: 1px; background: #DCD5C7;"></div></div>
+
+    <section style="position: relative; overflow: hidden;">
+      <svg viewBox="0 0 1440 760" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.13; pointer-events: none;">
+        <g stroke="#96908A" stroke-width="1.5" fill="none" opacity="0.55">
+          <path d="M -60 170 C 400 130 760 210 1500 150"></path>
+          <path d="M -60 230 C 400 182 760 278 1500 206"></path>
+          <path d="M -60 290 C 400 234 760 346 1500 262"></path>
+          <path d="M -60 620 C 460 664 830 576 1500 642"></path>
+          <path d="M -60 690 C 460 728 830 652 1500 709"></path>
+        </g>
+      </svg>
+      <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 64px 104px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center;">
+        <div>
+          <div style="font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.2em; color: #4F489B;">// 2.0 · THE FIELDBOOK RELEASE</div>
+          <div style="width: 220px; height: 1px; background: #DCD5C7; margin: 30px 0 38px;"></div>
+          <h1 style="font-weight: 700; font-size: 76px; line-height: 0.98; letter-spacing: -0.04em; margin: 0; text-wrap: pretty;">A map you build yourself.</h1>
+          <p style="font-size: 19px; line-height: 1.65; color: #6B655C; max-width: 520px; margin: 34px 0 0;">The places you decided were worth photographing, the ones you have already stood in and the ones you still want to. It starts empty, fills up at whatever pace you go out, and gets better the longer you keep it.</p>
+          <div style="display: flex; align-items: center; gap: 22px; margin-top: 42px;">
+            <a href="https://apps.apple.com/app/id6466506171" style="background: #4F489B; color: #F6F2EA; font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 6px;" style-hover="background: #5E55B5; color: #F6F2EA;">Download on the App Store</a>
+            <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #96908A;">IPHONE + IPAD</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <div style="position: relative; width: 330px; padding: 8px; background: #2A2620; border-radius: 46px; outline: 1.5px solid #96908A; outline-offset: 5px;">
+            <img src="assets/shots/i1-en.png" alt="Fotospots map of your own pins" style="width: 100%; height: auto; display: block; border-radius: 38px;">
+            <div style="position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 90px; height: 27px; border-radius: 14px; background: #2A2620;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width: 1200px; margin: 0 auto; padding: 0 64px 110px;">
+      <div style="height: 1px; background: #DCD5C7;"></div>
+      <div style="font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.2em; color: #96908A; padding: 54px 0 10px;">WHAT YOU DO WITH IT</div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); gap: 72px; align-items: center;">
+        <div>
+          <div style="display: flex; gap: 26px; padding: 34px 0; border-bottom: 1px solid #DCD5C7;">
+            <span style="font-family: 'Space Mono', monospace; font-size: 26px; font-weight: 700; color: #4F489B; line-height: 1.2;">01</span>
+            <div>
+              <h3 style="margin: 0 0 10px; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">Keep a place</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #6B655C;">Keeping a place takes about as long as noticing it. Pick the photo you just took and the spot lands where you were standing, at the hour you were there. Write down why you kept it: the light, the angle, the walk in.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 26px; padding: 34px 0; border-bottom: 1px solid #DCD5C7;">
+            <span style="font-family: 'Space Mono', monospace; font-size: 26px; font-weight: 700; color: #4F489B; line-height: 1.2;">02</span>
+            <div>
+              <h3 style="margin: 0 0 10px; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">Plan the next one</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #6B655C;">Half of a fieldbook is the places you have not been to yet. Put those on the map as a wishlist, look around the street before you drive out there, and when a plan falls apart, pull up whatever is near you instead.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 26px; padding: 34px 0;">
+            <span style="font-family: 'Space Mono', monospace; font-size: 26px; font-weight: 700; color: #4F489B; line-height: 1.2;">03</span>
+            <div>
+              <h3 style="margin: 0 0 10px; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">Hand one over</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #6B655C;">Every so often a place is worth handing to someone. It goes to that one person and stays between you, a private exchange that keeps your attention on the place itself.</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; max-width: 528px; margin: 0 auto; width: 100%;">
+          <div style="position: relative; width: 100%; box-sizing: border-box; padding: 6px; background: #2A2620; border-radius: 36px; outline: 1.5px solid #96908A; outline-offset: 4px; margin-top: 56px;">
+            <img src="assets/shots/i3-en.png" alt="Capture: pick the photo, place and hour come with it" style="width: 100%; height: auto; display: block; border-radius: 30px;">
+            <div style="position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 68px; height: 21px; border-radius: 11px; background: #2A2620;"></div>
+          </div>
+          <div style="position: relative; width: 100%; box-sizing: border-box; padding: 6px; background: #2A2620; border-radius: 36px; outline: 1.5px solid #96908A; outline-offset: 4px;">
+            <img src="assets/shots/i6-en.png" alt="Wishlist: the ones you still want to" style="width: 100%; height: auto; display: block; border-radius: 30px;">
+            <div style="position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 68px; height: 21px; border-radius: 11px; background: #2A2620;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #4F489B; color: #F6F2EA;">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 96px 64px 104px;">
+        <div style="font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.2em; color: #BEB9E0;">ON IPAD</div>
+        <div style="width: 220px; height: 1px; background: #3D3878; margin: 28px 0 36px;"></div>
+        <h2 style="margin: 0; font-weight: 700; font-size: 52px; line-height: 1.05; letter-spacing: -0.03em; max-width: 680px; text-wrap: pretty;">The spot docks. The map stays open.</h2>
+        <p style="font-size: 18px; line-height: 1.65; color: #BEB9E0; max-width: 560px; margin: 26px 0 0;">On iPad the map fills the screen, and the spot you tap docks along the edge, so the map stays open beside it.</p>
+        <div style="display: flex; justify-content: center; margin-top: 64px;">
+          <div style="position: relative; width: 860px; max-width: 100%; padding: 13px; background: #2A2620; border-radius: 34px; outline: 1.5px solid #BEB9E0; outline-offset: 6px; box-sizing: border-box;">
+            <img src="assets/shots/p2-en.png" alt="iPad: full-width map with the spot docked along the edge" style="width: 100%; height: auto; display: block; border-radius: 22px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="position: relative; overflow: hidden;">
+      <svg viewBox="0 0 1440 520" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.13; pointer-events: none;">
+        <g stroke="#96908A" stroke-width="1.5" fill="none" opacity="0.55">
+          <path d="M -60 360 C 460 404 830 316 1500 382"></path>
+          <path d="M -60 425 C 460 462 830 388 1500 444"></path>
+          <path d="M -60 490 C 460 520 830 458 1500 505"></path>
+        </g>
+      </svg>
+      <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 110px 64px 130px; text-align: center;">
+        <h2 style="margin: 0; font-weight: 700; font-size: 46px; line-height: 1.1; letter-spacing: -0.025em;">Give it a year.</h2>
+        <p style="font-size: 19px; line-height: 1.65; color: #6B655C; max-width: 620px; margin: 22px auto 0;">Then open the map some evening when you are not going anywhere: what is on it is a record of where you have been paying attention.</p>
+        <div style="display: flex; justify-content: center; margin-top: 40px;">
+          <a href="https://apps.apple.com/app/id6466506171" style="background: #4F489B; color: #F6F2EA; font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 6px;" style-hover="background: #5E55B5; color: #F6F2EA;">Download on the App Store</a>
+        </div>
+      </div>
+    </section>
+
+    <footer style="max-width: 1200px; margin: 0 auto; padding: 0 64px 44px;">
+      <div style="height: 1px; background: #DCD5C7;"></div>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 30px; flex-wrap: wrap;">
+        <a href="https://mugoworks.com" style="display: flex; align-items: center; gap: 10px; color: #96908A;" style-hover="color: #4F489B;">
+          <img src="assets/mark-on-light.svg" alt="mugo works mark" style="width: 20px; height: 20px; display: block;">
+          <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.16em;">A MUGO WORKS PRODUCT</span>
+        </a>
+        <div style="display: flex; gap: 32px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em;">
+          <a href="privacy-policy.dc.html" style="color: #96908A;" style-hover="color: #4F489B;">PRIVACY POLICY</a>
+          <a href="https://apps.apple.com/app/id6466506171" style="color: #96908A;" style-hover="color: #4F489B;">APP STORE</a>
+        </div>
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #96908A;">// 2.0</span>
+      </div>
+    </footer>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ de }}" hint-placeholder-val="{{ false }}">
+  <div data-screen-label="Landing DE">
+    <header style="max-width: 1200px; margin: 0 auto; padding: 26px 64px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="assets/app-icon.png" alt="Fotospots App-Icon" style="width: 34px; height: 34px; border-radius: 8px; display: block;">
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <div style="display: flex; align-items: baseline; gap: 10px;">
+            <span style="font-weight: 700; font-size: 20px; letter-spacing: -0.01em;">Fotospots</span>
+            <span style="font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #96908A;">PHOTO FIELDBOOK</span>
+          </div>
+          <a href="https://mugoworks.com" style="display: flex; align-items: center; gap: 8px; color: #96908A;" style-hover="color: #4F489B;">
+            <img src="assets/mark-on-light.svg" alt="mugo works mark" style="width: 13px; height: 13px; display: block;">
+            <span style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.14em;">BY MUGO WORKS</span>
+          </a>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px;">
+        <div style="display: flex; gap: 10px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em;">
+          <button onClick="{{ setEn }}" style="background: none; border: none; padding: 2px 0; cursor: pointer; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: #96908A; border-bottom: 1.5px solid transparent;" style-hover="color: #4F489B;">EN</button>
+          <button onClick="{{ setDe }}" style="background: none; border: none; padding: 2px 0; cursor: pointer; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em; color: #4F489B; font-weight: 700; border-bottom: 1.5px solid #4F489B;">DE</button>
+        </div>
+        <a href="https://apps.apple.com/de/app/id6466506171" style="background: #4F489B; color: #F6F2EA; font-weight: 700; font-size: 14px; padding: 10px 20px; border-radius: 6px;" style-hover="background: #5E55B5; color: #F6F2EA;">App laden</a>
+      </div>
+    </header>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 64px;"><div style="height: 1px; background: #DCD5C7;"></div></div>
+
+    <section style="position: relative; overflow: hidden;">
+      <svg viewBox="0 0 1440 760" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.13; pointer-events: none;">
+        <g stroke="#96908A" stroke-width="1.5" fill="none" opacity="0.55">
+          <path d="M -60 170 C 400 130 760 210 1500 150"></path>
+          <path d="M -60 230 C 400 182 760 278 1500 206"></path>
+          <path d="M -60 290 C 400 234 760 346 1500 262"></path>
+          <path d="M -60 620 C 460 664 830 576 1500 642"></path>
+          <path d="M -60 690 C 460 728 830 652 1500 709"></path>
+        </g>
+      </svg>
+      <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 64px 104px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: center;">
+        <div>
+          <div style="font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.2em; color: #4F489B;">// 2.0 · DAS FELDBUCH</div>
+          <div style="width: 220px; height: 1px; background: #DCD5C7; margin: 30px 0 38px;"></div>
+          <h1 style="font-weight: 700; font-size: 72px; line-height: 0.98; letter-spacing: -0.04em; margin: 0; text-wrap: pretty;">Eine Karte, die du selbst baust.</h1>
+          <p style="font-size: 19px; line-height: 1.65; color: #6B655C; max-width: 520px; margin: 34px 0 0;">Die Orte, die du für gut befunden hast, die, an denen du schon gestanden hast, und die, an denen du noch stehen willst. Sie fängt leer an, füllt sich in dem Tempo, in dem du rausgehst, und wird mit den Jahren besser.</p>
+          <div style="display: flex; align-items: center; gap: 22px; margin-top: 42px;">
+            <a href="https://apps.apple.com/de/app/id6466506171" style="background: #4F489B; color: #F6F2EA; font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 6px;" style-hover="background: #5E55B5; color: #F6F2EA;">Im App Store laden</a>
+            <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.16em; color: #96908A;">IPHONE + IPAD</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <div style="position: relative; width: 330px; padding: 8px; background: #2A2620; border-radius: 46px; outline: 1.5px solid #96908A; outline-offset: 5px;">
+            <img src="assets/shots/i1-de.png" alt="Fotospots Karte mit deinen eigenen Pins" style="width: 100%; height: auto; display: block; border-radius: 38px;">
+            <div style="position: absolute; top: 18px; left: 50%; transform: translateX(-50%); width: 90px; height: 27px; border-radius: 14px; background: #2A2620;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width: 1200px; margin: 0 auto; padding: 0 64px 110px;">
+      <div style="height: 1px; background: #DCD5C7;"></div>
+      <div style="font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.2em; color: #96908A; padding: 54px 0 10px;">WAS DU DAMIT MACHST</div>
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr); gap: 72px; align-items: center;">
+        <div>
+          <div style="display: flex; gap: 26px; padding: 34px 0; border-bottom: 1px solid #DCD5C7;">
+            <span style="font-family: 'Space Mono', monospace; font-size: 26px; font-weight: 700; color: #4F489B; line-height: 1.2;">01</span>
+            <div>
+              <h3 style="margin: 0 0 10px; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">Einen Ort behalten</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #6B655C;">Einen Ort zu behalten dauert ungefähr so lange, wie ihn zu bemerken. Du wählst das Foto, das du gerade gemacht hast, und der Fotospot landet da, wo du gestanden hast, zu der Stunde, zu der du da warst.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 26px; padding: 34px 0; border-bottom: 1px solid #DCD5C7;">
+            <span style="font-family: 'Space Mono', monospace; font-size: 26px; font-weight: 700; color: #4F489B; line-height: 1.2;">02</span>
+            <div>
+              <h3 style="margin: 0 0 10px; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">Den nächsten vormerken</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #6B655C;">Die Hälfte eines Feldbuchs sind die Orte, an denen du noch nicht warst. Setz sie als Merkliste auf die Karte, schau dich in der Straße um, bevor du hinfährst, und wenn ein Plan platzt, hol dir, was gerade in der Nähe liegt.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 26px; padding: 34px 0;">
+            <span style="font-family: 'Space Mono', monospace; font-size: 26px; font-weight: 700; color: #4F489B; line-height: 1.2;">03</span>
+            <div>
+              <h3 style="margin: 0 0 10px; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">Einen weitergeben</h3>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #6B655C;">Manchmal willst du jemandem einen Ort in die Hand geben. Er geht an genau diese eine Person und bleibt zwischen euch: ein leiser Austausch, der deine Aufmerksamkeit beim Ort belässt.</p>
+            </div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; max-width: 528px; margin: 0 auto; width: 100%;">
+          <div style="position: relative; width: 100%; box-sizing: border-box; padding: 6px; background: #2A2620; border-radius: 36px; outline: 1.5px solid #96908A; outline-offset: 4px; margin-top: 56px;">
+            <img src="assets/shots/i3-de.png" alt="Aufnehmen: Du wählst das Foto, Ort und Uhrzeit kommen mit" style="width: 100%; height: auto; display: block; border-radius: 30px;">
+            <div style="position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 68px; height: 21px; border-radius: 11px; background: #2A2620;"></div>
+          </div>
+          <div style="position: relative; width: 100%; box-sizing: border-box; padding: 6px; background: #2A2620; border-radius: 36px; outline: 1.5px solid #96908A; outline-offset: 4px;">
+            <img src="assets/shots/i6-de.png" alt="Merkliste: wo du noch stehen willst" style="width: 100%; height: auto; display: block; border-radius: 30px;">
+            <div style="position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 68px; height: 21px; border-radius: 11px; background: #2A2620;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="background: #4F489B; color: #F6F2EA;">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 96px 64px 104px;">
+        <div style="font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.2em; color: #BEB9E0;">AUF DEM IPAD</div>
+        <div style="width: 220px; height: 1px; background: #3D3878; margin: 28px 0 36px;"></div>
+        <h2 style="margin: 0; font-weight: 700; font-size: 52px; line-height: 1.05; letter-spacing: -0.03em; max-width: 680px; text-wrap: pretty;">Der Fotospot dockt an. Die Karte bleibt offen.</h2>
+        <p style="font-size: 18px; line-height: 1.65; color: #BEB9E0; max-width: 560px; margin: 26px 0 0;">Auf dem iPad läuft die Karte über den ganzen Bildschirm, und der Fotospot, den du antippst, dockt an den Rand, sodass die Karte daneben offen bleibt.</p>
+        <div style="display: flex; justify-content: center; margin-top: 64px;">
+          <div style="position: relative; width: 860px; max-width: 100%; padding: 13px; background: #2A2620; border-radius: 34px; outline: 1.5px solid #BEB9E0; outline-offset: 6px; box-sizing: border-box;">
+            <img src="assets/shots/p2-de.png" alt="iPad: Karte in voller Breite, Fotospot am Rand angedockt" style="width: 100%; height: auto; display: block; border-radius: 22px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="position: relative; overflow: hidden;">
+      <svg viewBox="0 0 1440 520" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.13; pointer-events: none;">
+        <g stroke="#96908A" stroke-width="1.5" fill="none" opacity="0.55">
+          <path d="M -60 360 C 460 404 830 316 1500 382"></path>
+          <path d="M -60 425 C 460 462 830 388 1500 444"></path>
+          <path d="M -60 490 C 460 520 830 458 1500 505"></path>
+        </g>
+      </svg>
+      <div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 110px 64px 130px; text-align: center;">
+        <h2 style="margin: 0; font-weight: 700; font-size: 46px; line-height: 1.1; letter-spacing: -0.025em;">Gib der Karte ein Jahr.</h2>
+        <p style="font-size: 19px; line-height: 1.65; color: #6B655C; max-width: 620px; margin: 22px auto 0;">Mach sie dann an einem Abend auf, an dem du nichts vorhast: Was du siehst, ist ein Bild davon, worauf du in dieser Zeit geachtet hast.</p>
+        <div style="display: flex; justify-content: center; margin-top: 40px;">
+          <a href="https://apps.apple.com/de/app/id6466506171" style="background: #4F489B; color: #F6F2EA; font-weight: 700; font-size: 16px; padding: 15px 28px; border-radius: 6px;" style-hover="background: #5E55B5; color: #F6F2EA;">Im App Store laden</a>
+        </div>
+      </div>
+    </section>
+
+    <footer style="max-width: 1200px; margin: 0 auto; padding: 0 64px 44px;">
+      <div style="height: 1px; background: #DCD5C7;"></div>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-top: 30px; flex-wrap: wrap;">
+        <a href="https://mugoworks.com" style="display: flex; align-items: center; gap: 10px; color: #96908A;" style-hover="color: #4F489B;">
+          <img src="assets/mark-on-light.svg" alt="mugo works Zeichen" style="width: 20px; height: 20px; display: block;">
+          <span style="font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.16em;">A MUGO WORKS PRODUCT</span>
+        </a>
+        <div style="display: flex; gap: 32px; font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.14em;">
+          <a href="privacy-policy.dc.html" style="color: #96908A;" style-hover="color: #4F489B;">DATENSCHUTZ</a>
+          <a href="https://apps.apple.com/de/app/id6466506171" style="color: #96908A;" style-hover="color: #4F489B;">APP STORE</a>
+        </div>
+        <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: #96908A;">// 2.0</span>
+      </div>
+    </footer>
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;language&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;en&quot;, &quot;de&quot;], &quot;default&quot;: &quot;en&quot;, &quot;tsType&quot;: &quot;'en' | 'de'&quot;, &quot;section&quot;: &quot;Content&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    let saved = null;
+    try { saved = localStorage.getItem('photospots-lang'); } catch (e) {}
+    this.state = { lang: saved === 'de' || saved === 'en' ? saved : (this.props.language ?? 'en') };
+  }
+  setLang(lang) {
+    this.setState({ lang });
+    try { localStorage.setItem('photospots-lang', lang); } catch (e) {}
+  }
+  renderVals() {
+    return {
+      en: this.state.lang !== 'de',
+      de: this.state.lang === 'de',
+      setEn: () => this.setLang('en'),
+      setDe: () => this.setLang('de'),
+    };
+  }
+}
+</script>
+</body>
+</html>

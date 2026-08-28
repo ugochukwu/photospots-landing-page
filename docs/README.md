@@ -32,6 +32,10 @@ renaming a doc.
 
 - [ADR index & conventions](adr/README.md) — Index of architecture decision records and the one-file-per-decision / supersede-not-edit conventions.
 
+### design/fieldbook-redesign-2026-08-28/
+
+- [Design handoff: photospots.net Fieldbook redesign (2026-08-28)](design/fieldbook-redesign-2026-08-28/README.md) — High-fidelity design spec for the Fotospots landing site — landing (EN+DE), privacy, 404, and the deferred shared-spot page — with palette, typography, layout grids, copy, and interaction rules; the binding definition of done for beads under epic photospots-landing-page-91e.
+
 ### guide/
 
 - [Beads usage](guide/beads-usage.md) — How work is tracked in beads — remote Dolt state, statuses, review labels, and common commands.
