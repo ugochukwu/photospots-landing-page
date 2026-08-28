@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fotospots · Photo Fieldbook: a map of places worth shooting</title>
-    <meta
-      name="description"
-      content="Fotospots is a photo fieldbook: a map of places worth shooting, built one spot at a time.">
+    <title>Fotospots · Photo Fieldbook</title>
+    <meta name="description" content="Fotospots is a photo fieldbook: a map of places worth photographing, built one spot at a time.">
     <link rel="canonical" href="https://www.photospots.net/">
+
+    <meta name="apple-itunes-app" content="app-id=6466506171">
 
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
@@ -15,128 +15,247 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Fotospots">
     <meta property="og:title" content="Fotospots · Photo Fieldbook">
-    <meta
-      property="og:description"
-      content="A map of places worth shooting, built one spot at a time.">
+    <meta property="og:description" content="A map of places worth photographing, built one spot at a time.">
     <meta property="og:url" content="https://www.photospots.net/">
-    <meta property="og:image" content="https://www.photospots.net/assets/screenshots/hero-map.png">
+    <meta property="og:image" content="https://www.photospots.net/assets/app-icon.png">
     <meta name="twitter:card" content="summary_large_image">
+
+    <script>
+      (function () {
+        var lang = 'en';
+        try {
+          var saved = localStorage.getItem('photospots-lang');
+          if (saved === 'en' || saved === 'de') lang = saved;
+        } catch (e) {}
+        var root = document.documentElement;
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang);
+      })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap"
-      rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Space+Mono:wght@400;700&amp;display=swap">
 
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
-  <body id="top">
-    <a class="fs-skip-link" href="#main">Skip to content</a>
+  <body>
+    <a class="fs-visually-hidden" href="#main">
+      <span class="fs-l-en">Skip to content</span>
+      <span class="fs-l-de">Zum Inhalt springen</span>
+    </a>
 
-    <div class="fs-nav-wrap">
-      <nav class="fs-nav fs-container" aria-label="Primary">
-        <a class="fs-wordmark" href="#top">
-          <svg
-            class="fs-wordmark-mark"
-            width="28"
-            height="28"
-            viewBox="0 0 32 32"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              class="fs-wordmark-pin"
-              d="M16 1.5C9.096 1.5 3.5 7.096 3.5 14c0 4.24 2.65 8.51 5.375 11.79 2.72 3.27 5.47 5.51 5.94 5.89a1.75 1.75 0 0 0 2.17 0c.47-.38 3.22-2.62 5.94-5.89C25.65 22.51 28.3 18.24 28.3 14c0-6.904-5.596-12.5-12.3-12.5Z"
-            />
-            <circle class="fs-wordmark-ring" cx="16" cy="14" r="6.4" />
-            <circle class="fs-wordmark-lens" cx="16" cy="14" r="3" />
-          </svg>
-          <span>Fotospots</span>
-        </a>
-        <ul class="fs-nav-links">
-          <li><a href="#map">Map</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="fs-nav-actions">
-          <a
-            class="fs-btn fs-btn-primary"
-            href="https://apps.apple.com/de/app/photo-spots-collect-share/id6466506171"
-            target="_blank"
-            rel="noopener"
-          >
-            Get the app
+    <header class="fs-header">
+      <div class="fs-header-lockup">
+        <img class="fs-header-icon" src="assets/app-icon.png" width="34" height="34" alt="Fotospots app icon">
+        <div class="fs-header-titles">
+          <div class="fs-wordmark-row">
+            <span class="fs-wordmark">Fotospots</span>
+            <span class="fs-subtitle">PHOTO FIELDBOOK</span>
+          </div>
+          <a class="fs-mugo-lockup" href="https://mugoworks.com">
+            <img class="fs-mugo-mark" src="assets/mark-on-light.svg" width="13" height="13" alt="mugo works mark">
+            <span class="fs-mugo-label">BY MUGO WORKS</span>
           </a>
         </div>
-      </nav>
-    </div>
+      </div>
+      <div class="fs-header-actions">
+        <div class="fs-lang-toggle" role="group" aria-label="Language">
+          <button type="button" class="fs-lang-btn" data-lang="en" aria-label="English">EN</button>
+          <button type="button" class="fs-lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+        </div>
+        <a class="fs-l-en fs-btn fs-btn-sm" href="https://apps.apple.com/app/id6466506171">Get the app</a>
+        <a class="fs-l-de fs-btn fs-btn-sm" href="https://apps.apple.com/de/app/id6466506171">App laden</a>
+      </div>
+    </header>
+    <div class="fs-header-hairline-wrap"><div class="fs-hairline"></div></div>
 
     <main id="main">
-      <section class="fs-hero" id="map">
-        <div class="fs-spread fs-container">
-          <div class="fs-spread-copy">
-            <p class="fs-eyebrow">
-              <span class="fs-eyebrow-dot" aria-hidden="true"></span>
-              Photo Fieldbook
-            </p>
-            <h1>A map of places worth shooting.</h1>
-            <p class="fs-hero-lede">
-              Fotospots turns the places you notice into a map you build yourself: spots you
-              have already stood in, and the ones still on your wishlist.
+      <section class="fs-topo-section" aria-labelledby="hero-h1">
+        <svg class="fs-topo" viewBox="0 0 1440 760" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <g class="fs-topo-group" stroke-width="1.5">
+            <path d="M -60 170 C 400 130 760 210 1500 150"></path>
+            <path d="M -60 230 C 400 182 760 278 1500 206"></path>
+            <path d="M -60 290 C 400 234 760 346 1500 262"></path>
+            <path d="M -60 620 C 460 664 830 576 1500 642"></path>
+            <path d="M -60 690 C 460 728 830 652 1500 709"></path>
+          </g>
+        </svg>
+        <div class="fs-hero-inner">
+          <div>
+            <div class="fs-eyebrow">
+              <span class="fs-l-en">// 2.0 · THE FIELDBOOK RELEASE</span>
+              <span class="fs-l-de">// 2.0 · DAS FELDBUCH</span>
+            </div>
+            <hr class="fs-rule-hero">
+            <h1 id="hero-h1" class="fs-h1">
+              <span class="fs-l-en">A map you build yourself.</span>
+              <span class="fs-l-de">Eine Karte, die du selbst baust.</span>
+            </h1>
+            <p class="fs-hero-lead">
+              <span class="fs-l-en">The places you decided were worth photographing, the ones you have already stood in and the ones you still want to. It starts empty, fills up at whatever pace you go out, and gets better the longer you keep it.</span>
+              <span class="fs-l-de">Die Orte, die du für gut befunden hast, die, an denen du schon gestanden hast, und die, an denen du noch stehen willst. Sie fängt leer an, füllt sich in dem Tempo, in dem du rausgehst, und wird mit den Jahren besser.</span>
             </p>
             <div class="fs-hero-actions">
-              <a
-                class="fs-btn fs-btn-primary"
-                href="https://apps.apple.com/de/app/photo-spots-collect-share/id6466506171"
-                target="_blank"
-                rel="noopener"
-              >
-                Get the app
-              </a>
-              <p class="fs-hero-fineprint">Free on the App Store · iPhone and iPad</p>
+              <a class="fs-l-en fs-btn fs-btn-lg" href="https://apps.apple.com/app/id6466506171">Download on the App Store</a>
+              <a class="fs-l-de fs-btn fs-btn-lg" href="https://apps.apple.com/de/app/id6466506171">Im App Store laden</a>
+              <span class="fs-hero-meta">IPHONE + IPAD</span>
             </div>
           </div>
-          <div class="fs-spread-visual">
-            <div class="fs-frame">
-              <img
-                src="assets/screenshots/hero-map.png"
-                alt="The Fotospots map screen showing a cluster of saved spots across northern Germany, with a card for Dresden reading 24 cities, 91 spots."
-                width="414"
-                height="900"
-                loading="eager">
+          <div class="fs-hero-visual">
+            <div class="fs-frame fs-frame-iphone-lg">
+              <img class="fs-l-en" src="assets/shots/i1-en.png" alt="Fotospots map of your own pins">
+              <img class="fs-l-de" src="assets/shots/i1-de.png" alt="Fotospots Karte mit deinen eigenen Pins">
+              <div class="fs-island" aria-hidden="true"></div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fs-stanzas-section" aria-labelledby="stanzas-eyebrow">
+        <div class="fs-hairline"></div>
+        <div id="stanzas-eyebrow" class="fs-stanzas-eyebrow">
+          <span class="fs-l-en">WHAT YOU DO WITH IT</span>
+          <span class="fs-l-de">WAS DU DAMIT MACHST</span>
+        </div>
+        <div class="fs-stanzas-grid">
+          <div>
+            <div class="fs-stanza">
+              <span class="fs-stanza-num">01</span>
+              <div>
+                <h3 class="fs-stanza-h">
+                  <span class="fs-l-en">Keep a place</span>
+                  <span class="fs-l-de">Einen Ort behalten</span>
+                </h3>
+                <p class="fs-stanza-body">
+                  <span class="fs-l-en">Keeping a place takes about as long as noticing it. Pick the photo you just took and the spot lands where you were standing, at the hour you were there. Write down why you kept it: the light, the angle, the walk in.</span>
+                  <span class="fs-l-de">Einen Ort zu behalten dauert ungefähr so lange, wie ihn zu bemerken. Du wählst das Foto, das du gerade gemacht hast, und der Fotospot landet da, wo du gestanden hast, zu der Stunde, zu der du da warst.</span>
+                </p>
+              </div>
+            </div>
+            <div class="fs-stanza">
+              <span class="fs-stanza-num">02</span>
+              <div>
+                <h3 class="fs-stanza-h">
+                  <span class="fs-l-en">Plan the next one</span>
+                  <span class="fs-l-de">Den nächsten vormerken</span>
+                </h3>
+                <p class="fs-stanza-body">
+                  <span class="fs-l-en">Half of a fieldbook is the places you have not been to yet. Put those on the map as a wishlist, look around the street before you drive out there, and when a plan falls apart, pull up whatever is near you instead.</span>
+                  <span class="fs-l-de">Die Hälfte eines Feldbuchs sind die Orte, an denen du noch nicht warst. Setz sie als Merkliste auf die Karte, schau dich in der Straße um, bevor du hinfährst, und wenn ein Plan platzt, hol dir, was gerade in der Nähe liegt.</span>
+                </p>
+              </div>
+            </div>
+            <div class="fs-stanza">
+              <span class="fs-stanza-num">03</span>
+              <div>
+                <h3 class="fs-stanza-h">
+                  <span class="fs-l-en">Hand one over</span>
+                  <span class="fs-l-de">Einen weitergeben</span>
+                </h3>
+                <p class="fs-stanza-body">
+                  <span class="fs-l-en">Every so often a place is worth handing to someone. It goes to that one person and stays between you, a private exchange that keeps your attention on the place itself.</span>
+                  <span class="fs-l-de">Manchmal willst du jemandem einen Ort in die Hand geben. Er geht an genau diese eine Person und bleibt zwischen euch: ein leiser Austausch, der deine Aufmerksamkeit beim Ort belässt.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="fs-phones-pair">
+            <div class="fs-frame fs-frame-iphone-sm fs-phones-pair-offset">
+              <img class="fs-l-en" src="assets/shots/i3-en.png" alt="Capture: pick the photo, place and hour come with it">
+              <img class="fs-l-de" src="assets/shots/i3-de.png" alt="Aufnehmen: Du wählst das Foto, Ort und Uhrzeit kommen mit">
+              <div class="fs-island" aria-hidden="true"></div>
+            </div>
+            <div class="fs-frame fs-frame-iphone-sm">
+              <img class="fs-l-en" src="assets/shots/i6-en.png" alt="Wishlist: the ones you still want to">
+              <img class="fs-l-de" src="assets/shots/i6-de.png" alt="Merkliste: wo du noch stehen willst">
+              <div class="fs-island" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fs-ipad-section" aria-labelledby="ipad-h2">
+        <div class="fs-ipad-inner">
+          <div class="fs-eyebrow fs-eyebrow-brand">
+            <span class="fs-l-en">ON IPAD</span>
+            <span class="fs-l-de">AUF DEM IPAD</span>
+          </div>
+          <hr class="fs-rule-brand">
+          <h2 id="ipad-h2" class="fs-h2-brand">
+            <span class="fs-l-en">The spot docks. The map stays open.</span>
+            <span class="fs-l-de">Der Fotospot dockt an. Die Karte bleibt offen.</span>
+          </h2>
+          <p class="fs-ipad-body">
+            <span class="fs-l-en">On iPad the map fills the screen, and the spot you tap docks along the edge, so the map stays open beside it.</span>
+            <span class="fs-l-de">Auf dem iPad läuft die Karte über den ganzen Bildschirm, und der Fotospot, den du antippst, dockt an den Rand, sodass die Karte daneben offen bleibt.</span>
+          </p>
+          <div class="fs-ipad-visual">
+            <div class="fs-frame fs-frame-ipad">
+              <img class="fs-l-en" src="assets/shots/p2-en.png" alt="iPad: full-width map with the spot docked along the edge">
+              <img class="fs-l-de" src="assets/shots/p2-de.png" alt="iPad: Karte in voller Breite, Fotospot am Rand angedockt">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fs-topo-section" aria-labelledby="closing-h2">
+        <svg class="fs-topo" viewBox="0 0 1440 520" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <g class="fs-topo-group" stroke-width="1.5">
+            <path d="M -60 360 C 460 404 830 316 1500 382"></path>
+            <path d="M -60 425 C 460 462 830 388 1500 444"></path>
+            <path d="M -60 490 C 460 520 830 458 1500 505"></path>
+          </g>
+        </svg>
+        <div class="fs-closing-inner">
+          <h2 id="closing-h2" class="fs-h2">
+            <span class="fs-l-en">Give it a year.</span>
+            <span class="fs-l-de">Gib der Karte ein Jahr.</span>
+          </h2>
+          <p class="fs-closing-body">
+            <span class="fs-l-en">Then open the map some evening when you are not going anywhere: what is on it is a record of where you have been paying attention.</span>
+            <span class="fs-l-de">Mach sie dann an einem Abend auf, an dem du nichts vorhast: Was du siehst, ist ein Bild davon, worauf du in dieser Zeit geachtet hast.</span>
+          </p>
+          <div class="fs-closing-cta">
+            <a class="fs-l-en fs-btn fs-btn-lg" href="https://apps.apple.com/app/id6466506171">Download on the App Store</a>
+            <a class="fs-l-de fs-btn fs-btn-lg" href="https://apps.apple.com/de/app/id6466506171">Im App Store laden</a>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="fs-footer" id="contact">
-      <div class="fs-footer-inner fs-container">
-        <a class="fs-wordmark" href="#top">
-          <svg
-            class="fs-wordmark-mark fs-wordmark-mark--on-deep"
-            width="24"
-            height="24"
-            viewBox="0 0 32 32"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path
-              class="fs-wordmark-pin"
-              d="M16 1.5C9.096 1.5 3.5 7.096 3.5 14c0 4.24 2.65 8.51 5.375 11.79 2.72 3.27 5.47 5.51 5.94 5.89a1.75 1.75 0 0 0 2.17 0c.47-.38 3.22-2.62 5.94-5.89C25.65 22.51 28.3 18.24 28.3 14c0-6.904-5.596-12.5-12.3-12.5Z"
-            />
-            <circle class="fs-wordmark-ring" cx="16" cy="14" r="6.4" />
-            <circle class="fs-wordmark-lens" cx="16" cy="14" r="3" />
-          </svg>
-          <span>Fotospots</span>
+    <footer class="fs-footer">
+      <div class="fs-hairline"></div>
+      <div class="fs-footer-row">
+        <a class="fs-footer-mugo" href="https://mugoworks.com">
+          <img class="fs-footer-mugo-mark" src="assets/mark-on-light.svg" width="20" height="20" alt="mugo works mark">
+          <span class="fs-footer-mugo-label">A MUGO WORKS PRODUCT</span>
         </a>
-        <p class="fs-footer-tagline">Photo Fieldbook</p>
-        <ul class="fs-footer-links">
-          <li><a href="mailto:app.photospots@gmail.com">app.photospots@gmail.com</a></li>
-          <li><a href="/privacypolicy/">Privacy Policy</a></li>
-        </ul>
-        <p class="fs-footer-fine">© 2026 Fotospots. Made for iPhone and iPad.</p>
+        <div class="fs-footer-links">
+          <a class="fs-l-en" href="/privacypolicy/">PRIVACY POLICY</a>
+          <a class="fs-l-de" href="/privacypolicy/">DATENSCHUTZ</a>
+          <a class="fs-l-en" href="https://apps.apple.com/app/id6466506171">APP STORE</a>
+          <a class="fs-l-de" href="https://apps.apple.com/de/app/id6466506171">APP STORE</a>
+        </div>
+        <span class="fs-footer-tag">// 2.0</span>
       </div>
     </footer>
+
+    <script>
+      (function () {
+        var buttons = document.querySelectorAll('.fs-lang-btn');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener('click', function (event) {
+            var next = event.currentTarget.getAttribute('data-lang');
+            if (next !== 'en' && next !== 'de') return;
+            var root = document.documentElement;
+            root.setAttribute('data-lang', next);
+            root.setAttribute('lang', next);
+            try { localStorage.setItem('photospots-lang', next); } catch (e) {}
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
