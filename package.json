@@ -1,9 +1,9 @@
 {
   "name": "photospots-landing-page",
   "private": true,
-  "description": "Fotospots marketing site — plain HTML/CSS, no build step.",
+  "description": "Fotospots marketing site: plain HTML/CSS, no build step.",
   "scripts": {
-    "lint": "python3 scripts/check-placeholders && html-validate index.html privacypolicy/index.html",
+    "lint": "python3 scripts/check-placeholders && html-validate $(find . -name '*.html' -not -path './node_modules/*' -not -path './.git/*' -not -path './.claude/*')",
     "serve": "python3 -m http.server 8000"
   },
   "devDependencies": {

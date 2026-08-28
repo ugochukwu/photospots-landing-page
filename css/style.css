@@ -1,0 +1,418 @@
+/*
+  style.css — Fotospots page shell: reset, base type, and the reusable structural
+  vocabulary this site is built from (see docs/guide/terminology.md):
+
+    fs-eyebrow  the small monospace label above a section headline
+    fs-spread   a two-column section pairing copy with a fs-frame
+    fs-frame    the tilted, washi-tape-cornered mockup that holds a screenshot
+
+  This file styles the nav, hero, and footer that ship in this bead. Later beads add more
+  fs-spread sections between the hero and the footer; the components below are written to
+  take that content without changes here.
+*/
+
+/* ---------- Reset & base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--fs-color-bg);
+  color: var(--fs-color-text);
+  font-family: var(--fs-font-body);
+  font-size: var(--fs-text-body);
+  line-height: var(--fs-line-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--fs-color-link);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--fs-color-link-hover);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fs-font-display);
+  color: var(--fs-color-ink);
+  line-height: var(--fs-line-tight);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Keyboard focus only — mouse/touch interaction never triggers this ring. */
+:focus-visible {
+  outline: 3px solid var(--fs-color-focus-ring);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.fs-skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  background: var(--fs-color-surface);
+  color: var(--fs-color-ink);
+  padding: 0.6rem 1rem;
+  border-radius: var(--fs-radius-sm);
+  z-index: 100;
+  transition: top var(--fs-transition-fast);
+}
+
+.fs-skip-link:focus-visible {
+  top: 1rem;
+}
+
+.fs-container {
+  width: 100%;
+  max-width: var(--fs-content-width);
+  margin-inline: auto;
+  padding-inline: var(--fs-space-md);
+}
+
+@media (min-width: 640px) {
+  .fs-container {
+    padding-inline: var(--fs-space-lg);
+  }
+}
+
+/* ---------- Buttons ---------- */
+
+.fs-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--fs-font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--fs-radius-pill);
+  border: 1px solid transparent;
+  transition: transform var(--fs-transition-lift), box-shadow var(--fs-transition-lift),
+    background-color var(--fs-transition-fast);
+  white-space: nowrap;
+}
+
+.fs-btn-primary {
+  background: var(--fs-color-violet-600);
+  color: #fff;
+}
+
+.fs-btn-primary:hover {
+  background: var(--fs-color-violet-700);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: var(--fs-shadow-card);
+}
+
+.fs-btn-quiet {
+  background: transparent;
+  color: var(--fs-color-ink);
+  border-color: var(--fs-color-paper-line);
+}
+
+.fs-btn-quiet:hover {
+  color: var(--fs-color-violet-700);
+  border-color: var(--fs-color-violet-300);
+}
+
+/* ---------- Eyebrow ---------- */
+
+.fs-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: var(--fs-font-mono);
+  font-size: var(--fs-text-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fs-color-violet-700);
+  margin: 0 0 var(--fs-space-sm);
+}
+
+.fs-eyebrow-dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--fs-color-pin);
+  flex: none;
+}
+
+/* ---------- Nav ---------- */
+
+.fs-nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(248, 246, 253, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--fs-color-paper-line);
+}
+
+.fs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fs-space-sm);
+  padding-block: var(--fs-space-sm);
+}
+
+.fs-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--fs-font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--fs-color-ink);
+  text-decoration: none;
+}
+
+.fs-wordmark:hover {
+  color: var(--fs-color-violet-700);
+}
+
+.fs-wordmark-mark {
+  flex: none;
+}
+
+.fs-wordmark-pin {
+  fill: var(--fs-color-pin);
+}
+
+.fs-wordmark-ring {
+  fill: var(--fs-color-paper);
+}
+
+.fs-wordmark-mark--on-deep .fs-wordmark-ring {
+  fill: var(--fs-color-paper-deep);
+}
+
+.fs-wordmark-lens {
+  fill: var(--fs-color-violet-700);
+}
+
+.fs-nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-md);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.fs-nav-links a {
+  color: var(--fs-color-ink-soft);
+  text-decoration: none;
+}
+
+.fs-nav-links a:hover {
+  color: var(--fs-color-violet-700);
+}
+
+.fs-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-md);
+  margin-left: auto;
+}
+
+@media (max-width: 30rem) {
+  .fs-nav-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    padding-top: var(--fs-space-2xs);
+  }
+
+  .fs-nav-actions {
+    margin-left: 0;
+  }
+}
+
+/* ---------- Hero / spread ---------- */
+
+.fs-spread {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: var(--fs-space-xl);
+  padding-block: var(--fs-space-xl);
+}
+
+@media (min-width: 60rem) {
+  .fs-spread {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--fs-space-2xl);
+  }
+}
+
+.fs-spread-copy {
+  max-width: 34rem;
+}
+
+.fs-hero h1 {
+  font-size: var(--fs-text-h1);
+  letter-spacing: -0.01em;
+}
+
+.fs-hero-lede {
+  font-size: var(--fs-text-lede);
+  color: var(--fs-color-text-muted);
+  margin-top: var(--fs-space-md);
+  max-width: 32rem;
+}
+
+.fs-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--fs-space-md);
+  margin-top: var(--fs-space-lg);
+}
+
+.fs-hero-fineprint {
+  font-family: var(--fs-font-mono);
+  font-size: 0.8125rem;
+  color: var(--fs-color-ink-faint);
+  letter-spacing: 0.02em;
+}
+
+.fs-spread-visual {
+  display: flex;
+  justify-content: center;
+}
+
+/* ---------- Frame ---------- */
+
+.fs-frame {
+  position: relative;
+  max-width: 21rem;
+  width: 100%;
+  padding: var(--fs-space-xs);
+  background: var(--fs-color-surface);
+  border-radius: var(--fs-radius-md);
+  box-shadow: var(--fs-shadow-frame);
+  transform: rotate(-2.5deg);
+  transition: transform var(--fs-transition-lift);
+}
+
+.fs-frame:hover {
+  transform: rotate(-1deg) translateY(-0.25rem);
+}
+
+.fs-frame img {
+  border-radius: calc(var(--fs-radius-md) - 0.3rem);
+}
+
+.fs-frame::before {
+  content: "";
+  position: absolute;
+  top: -0.9rem;
+  left: 50%;
+  width: 4.5rem;
+  height: 1.6rem;
+  background: linear-gradient(
+    100deg,
+    rgba(226, 223, 255, 0.85),
+    rgba(226, 223, 255, 0.55)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transform: translateX(-50%) rotate(-3deg);
+  box-shadow: 0 0.25rem 0.5rem rgba(36, 31, 74, 0.18);
+}
+
+/* ---------- Footer ---------- */
+
+.fs-footer {
+  border-top: 1px solid var(--fs-color-paper-line);
+  background: var(--fs-color-paper-deep);
+}
+
+.fs-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--fs-space-sm);
+  padding-block: var(--fs-space-xl);
+}
+
+.fs-footer-tagline {
+  font-family: var(--fs-font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fs-color-ink-faint);
+}
+
+.fs-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fs-space-md) var(--fs-space-lg);
+  font-size: 0.9375rem;
+}
+
+.fs-footer-links a {
+  color: var(--fs-color-ink-soft);
+}
+
+.fs-footer-fine {
+  font-size: 0.8125rem;
+  color: var(--fs-color-ink-faint);
+  margin-top: var(--fs-space-sm);
+}
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fs-frame {
+    transform: rotate(-2.5deg);
+  }
+
+  .fs-frame:hover {
+    transform: rotate(-2.5deg);
+  }
+}

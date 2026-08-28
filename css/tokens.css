@@ -1,0 +1,83 @@
+/*
+  tokens.css — Fotospots design system, values only.
+
+  Palette is derived from the real app icon (assets/app-icon-512.png): the lavender
+  icon-background gradient becomes the site's paper tone, the icon's violet accent
+  (Xcode AccentColor #4F489B) becomes the ink and interactive color, and the pin-red the
+  icon's camera-pin is rendered in becomes a small, deliberately rare accent for waypoint
+  marks. Type pairs a characterful display face (Fraunces, for headlines) with a plain body
+  face (IBM Plex Sans) and a monospace face (IBM Plex Mono) for the eyebrow labels that echo
+  the app's own EXIF-style metadata stamps. See docs/guide/terminology.md for the vocabulary
+  these tokens support (eyebrow, spread, frame).
+*/
+
+:root {
+  /* Color — paper (backgrounds) */
+  --fs-color-paper: #f8f6fd;
+  --fs-color-paper-deep: #efeafb;
+  --fs-color-paper-line: rgba(33, 29, 59, 0.12);
+
+  /* Color — ink (text) */
+  --fs-color-ink: #211d3b;
+  --fs-color-ink-soft: #4b4570;
+  --fs-color-ink-faint: #5c5782;
+
+  /* Color — violet (brand accent, from the app icon's AccentColor) */
+  --fs-color-violet-100: #e2dfff;
+  --fs-color-violet-300: #bbbefc;
+  --fs-color-violet-600: #4f489b;
+  --fs-color-violet-700: #3d3778;
+  --fs-color-violet-900: #241f4a;
+
+  /* Color — pin (rare accent, from the icon's camera pin) */
+  --fs-color-pin: #b82020;
+  --fs-color-pin-deep: #8f1818;
+
+  /* Color — semantic aliases */
+  --fs-color-bg: var(--fs-color-paper);
+  --fs-color-surface: #ffffff;
+  --fs-color-text: var(--fs-color-ink);
+  --fs-color-text-muted: var(--fs-color-ink-soft);
+  --fs-color-link: var(--fs-color-violet-600);
+  --fs-color-link-hover: var(--fs-color-violet-700);
+  --fs-color-focus-ring: var(--fs-color-violet-600);
+
+  /* Type families */
+  --fs-font-display: "Fraunces", "Iowan Old Style", ui-serif, serif;
+  --fs-font-body: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+  --fs-font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Type scale (fluid between mobile and desktop) */
+  --fs-text-eyebrow: 0.8125rem;
+  --fs-text-body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --fs-text-lede: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
+  --fs-text-h1: clamp(2.25rem, 1.85rem + 1.9vw, 3.75rem);
+  --fs-text-h2: clamp(1.75rem, 1.55rem + 0.9vw, 2.5rem);
+  --fs-line-tight: 1.1;
+  --fs-line-snug: 1.35;
+  --fs-line-body: 1.6;
+
+  /* Spacing scale */
+  --fs-space-2xs: 0.375rem;
+  --fs-space-xs: 0.625rem;
+  --fs-space-sm: 1rem;
+  --fs-space-md: 1.5rem;
+  --fs-space-lg: 2.5rem;
+  --fs-space-xl: 4rem;
+  --fs-space-2xl: 6rem;
+
+  /* Layout */
+  --fs-content-width: 74rem;
+
+  /* Radii & shadow */
+  --fs-radius-sm: 0.5rem;
+  --fs-radius-md: 1rem;
+  --fs-radius-pill: 999px;
+  --fs-shadow-frame: 0 1.5rem 3rem -1.25rem rgba(36, 31, 74, 0.45), 0 0.5rem 1rem -0.5rem
+    rgba(36, 31, 74, 0.3);
+  --fs-shadow-card: 0 0.75rem 1.75rem -1rem rgba(36, 31, 74, 0.25);
+
+  /* Motion (durations only — see style.css for the reduced-motion override) */
+  --fs-transition-fast: 150ms ease;
+  --fs-transition-lift: 220ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
