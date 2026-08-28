@@ -1,0 +1,12 @@
+{
+  "name": "photospots-landing-page",
+  "private": true,
+  "description": "Fotospots marketing site — plain HTML/CSS, no build step.",
+  "scripts": {
+    "lint": "python3 scripts/check-placeholders && html-validate index.html privacypolicy/index.html",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "html-validate": "^8.24.0"
+  }
+}
