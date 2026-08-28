@@ -1,14 +1,11 @@
 /*
-  style.css — Fotospots page shell: reset, base type, and the reusable structural
-  vocabulary this site is built from (see docs/guide/terminology.md):
+  style.css — Fotospots Fieldbook page shell and components.
 
-    fs-eyebrow  the small monospace label above a section headline
-    fs-spread   a two-column section pairing copy with a fs-frame
-    fs-frame    the tilted, washi-tape-cornered mockup that holds a screenshot
+  Consumes tokens from css/tokens.css via var(--...); no hex or font-family literals
+  appear here except in inherited CSS keywords. Structural vocabulary is defined in
+  docs/guide/terminology.md (eyebrow, spread, frame).
 
-  This file styles the nav, hero, and footer that ship in this bead. Later beads add more
-  fs-spread sections between the hero and the footer; the components below are written to
-  take that content without changes here.
+  The whole shipped site (landing, privacy policy, 404) shares this stylesheet.
 */
 
 /* ---------- Reset & base ---------- */
@@ -25,37 +22,44 @@ html {
 
 body {
   margin: 0;
-  background: var(--fs-color-bg);
-  color: var(--fs-color-text);
+  background: var(--fs-ground);
+  color: var(--fs-ink);
   font-family: var(--fs-font-body);
-  font-size: var(--fs-text-body);
-  line-height: var(--fs-line-body);
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-img {
-  max-width: 100%;
+img,
+svg {
   display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
 a {
-  color: var(--fs-color-link);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
+  color: var(--fs-interactive);
+  text-decoration: none;
+  transition: color var(--fs-transition-fast);
 }
 
 a:hover {
-  color: var(--fs-color-link-hover);
+  color: var(--fs-link-hover);
 }
 
 h1,
 h2,
 h3 {
-  font-family: var(--fs-font-display);
-  color: var(--fs-color-ink);
-  line-height: var(--fs-line-tight);
+  font-family: var(--fs-font-body);
+  color: var(--fs-ink);
   margin: 0;
+  text-wrap: pretty;
 }
 
 p {
@@ -68,40 +72,149 @@ ul {
   list-style: none;
 }
 
-/* Keyboard focus only — mouse/touch interaction never triggers this ring. */
+.fs-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus-visible: keyboard-only outline; mouse and touch clicks do not raise it. */
 :focus-visible {
-  outline: 3px solid var(--fs-color-focus-ring);
+  outline: 2px solid var(--fs-interactive);
   outline-offset: 3px;
   border-radius: 2px;
 }
 
-.fs-skip-link {
-  position: absolute;
-  left: 1rem;
-  top: -3rem;
-  background: var(--fs-color-surface);
-  color: var(--fs-color-ink);
-  padding: 0.6rem 1rem;
-  border-radius: var(--fs-radius-sm);
-  z-index: 100;
-  transition: top var(--fs-transition-fast);
+/* ---------- Language toggle: content visibility ---------- */
+
+html[data-lang="en"] .fs-l-de,
+html[data-lang="de"] .fs-l-en {
+  display: none !important;
 }
 
-.fs-skip-link:focus-visible {
-  top: 1rem;
-}
+/* ---------- Container ---------- */
 
 .fs-container {
-  width: 100%;
-  max-width: var(--fs-content-width);
-  margin-inline: auto;
-  padding-inline: var(--fs-space-md);
+  max-width: var(--fs-content-max);
+  margin: 0 auto;
+  padding: 0 var(--fs-side-padding);
 }
 
-@media (min-width: 640px) {
-  .fs-container {
-    padding-inline: var(--fs-space-lg);
-  }
+/* ---------- Header ---------- */
+
+.fs-header {
+  max-width: var(--fs-content-max);
+  margin: 0 auto;
+  padding: 26px var(--fs-side-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.fs-header-lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fs-header-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--fs-radius-icon);
+}
+
+.fs-header-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fs-wordmark-row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.fs-wordmark {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+.fs-subtitle {
+  font-family: var(--fs-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--fs-muted);
+}
+
+.fs-mugo-lockup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--fs-muted);
+}
+
+.fs-mugo-lockup:hover {
+  color: var(--fs-interactive);
+}
+
+.fs-mugo-mark {
+  width: 13px;
+  height: 13px;
+}
+
+.fs-mugo-label {
+  font-family: var(--fs-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+}
+
+.fs-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* ---------- Language toggle buttons ---------- */
+
+.fs-lang-toggle {
+  display: flex;
+  gap: 10px;
+  font-family: var(--fs-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+
+.fs-lang-btn {
+  background: none;
+  border: none;
+  padding: 2px 0;
+  font-family: var(--fs-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--fs-muted);
+  border-bottom: var(--fs-keyline-weight) solid transparent;
+  transition: color var(--fs-transition-fast), border-color var(--fs-transition-fast),
+    font-weight var(--fs-transition-fast);
+}
+
+.fs-lang-btn:hover {
+  color: var(--fs-interactive);
+}
+
+html[data-lang="en"] .fs-lang-btn[data-lang="en"],
+html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
+  color: var(--fs-interactive);
+  font-weight: 700;
+  border-bottom-color: var(--fs-interactive);
 }
 
 /* ---------- Buttons ---------- */
@@ -109,290 +222,562 @@ ul {
 .fs-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  background: var(--fs-interactive);
+  color: var(--fs-bright-on-brand);
   font-family: var(--fs-font-body);
-  font-weight: 600;
-  font-size: 0.9375rem;
-  text-decoration: none;
-  padding: 0.7rem 1.4rem;
-  border-radius: var(--fs-radius-pill);
-  border: 1px solid transparent;
-  transition: transform var(--fs-transition-lift), box-shadow var(--fs-transition-lift),
-    background-color var(--fs-transition-fast);
-  white-space: nowrap;
+  font-weight: 700;
+  border-radius: var(--fs-radius-btn);
+  transition: background-color var(--fs-transition-fast);
 }
 
-.fs-btn-primary {
-  background: var(--fs-color-violet-600);
-  color: #fff;
+.fs-btn:hover {
+  background: var(--fs-interactive-hover);
+  color: var(--fs-bright-on-brand);
 }
 
-.fs-btn-primary:hover {
-  background: var(--fs-color-violet-700);
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: var(--fs-shadow-card);
+.fs-btn-sm {
+  font-size: 14px;
+  padding: 10px 20px;
+  min-height: 44px;
 }
 
-.fs-btn-quiet {
-  background: transparent;
-  color: var(--fs-color-ink);
-  border-color: var(--fs-color-paper-line);
+.fs-btn-lg {
+  font-size: 16px;
+  padding: 15px 28px;
+  min-height: 44px;
 }
 
-.fs-btn-quiet:hover {
-  color: var(--fs-color-violet-700);
-  border-color: var(--fs-color-violet-300);
+/* ---------- Header hairline ---------- */
+
+.fs-header-hairline-wrap {
+  max-width: var(--fs-content-max);
+  margin: 0 auto;
+  padding: 0 var(--fs-side-padding);
 }
 
-/* ---------- Eyebrow ---------- */
+.fs-hairline {
+  height: var(--fs-hairline-weight);
+  background: var(--fs-hairline);
+}
+
+/* ---------- Topo contours ---------- */
+
+.fs-topo-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.fs-topo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.13;
+  pointer-events: none;
+}
+
+.fs-topo-group {
+  stroke: var(--fs-muted);
+  fill: none;
+  opacity: 0.55;
+}
+
+/* ---------- Hero ---------- */
+
+.fs-hero-inner {
+  position: relative;
+  max-width: var(--fs-content-max);
+  margin: 0 auto;
+  padding: 88px var(--fs-side-padding) 104px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 64px;
+  align-items: center;
+}
 
 .fs-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55em;
   font-family: var(--fs-font-mono);
-  font-size: var(--fs-text-eyebrow);
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fs-color-violet-700);
-  margin: 0 0 var(--fs-space-sm);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--fs-interactive);
 }
 
-.fs-eyebrow-dot {
-  width: 0.5em;
-  height: 0.5em;
-  border-radius: 50%;
-  background: var(--fs-color-pin);
-  flex: none;
+.fs-eyebrow-muted {
+  color: var(--fs-muted);
 }
 
-/* ---------- Nav ---------- */
-
-.fs-nav-wrap {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: rgba(248, 246, 253, 0.88);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--fs-color-paper-line);
+.fs-eyebrow-brand {
+  color: var(--fs-muted-on-brand);
 }
 
-.fs-nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--fs-space-sm);
-  padding-block: var(--fs-space-sm);
+.fs-rule-hero {
+  width: 220px;
+  height: var(--fs-hairline-weight);
+  background: var(--fs-hairline);
+  margin: 30px 0 38px;
+  border: 0;
 }
 
-.fs-wordmark {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-family: var(--fs-font-display);
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--fs-color-ink);
-  text-decoration: none;
+.fs-rule-brand {
+  width: 220px;
+  height: var(--fs-hairline-weight);
+  background: var(--fs-hairline-on-brand);
+  margin: 28px 0 36px;
+  border: 0;
 }
 
-.fs-wordmark:hover {
-  color: var(--fs-color-violet-700);
+.fs-h1 {
+  font-weight: 700;
+  font-size: 76px;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  margin: 0;
 }
 
-.fs-wordmark-mark {
-  flex: none;
+/*
+  DE headline sets one point smaller than EN per the design spec (72px vs 76px).
+  :where() keeps this at the same specificity as .fs-h1 so the responsive
+  overrides below still win on narrow viewports for both languages.
+*/
+:where(html[data-lang="de"]) .fs-h1 {
+  font-size: 72px;
 }
 
-.fs-wordmark-pin {
-  fill: var(--fs-color-pin);
-}
-
-.fs-wordmark-ring {
-  fill: var(--fs-color-paper);
-}
-
-.fs-wordmark-mark--on-deep .fs-wordmark-ring {
-  fill: var(--fs-color-paper-deep);
-}
-
-.fs-wordmark-lens {
-  fill: var(--fs-color-violet-700);
-}
-
-.fs-nav-links {
-  display: flex;
-  align-items: center;
-  gap: var(--fs-space-md);
-  font-size: 0.9375rem;
-  font-weight: 500;
-}
-
-.fs-nav-links a {
-  color: var(--fs-color-ink-soft);
-  text-decoration: none;
-}
-
-.fs-nav-links a:hover {
-  color: var(--fs-color-violet-700);
-}
-
-.fs-nav-actions {
-  display: flex;
-  align-items: center;
-  gap: var(--fs-space-md);
-  margin-left: auto;
-}
-
-@media (max-width: 30rem) {
-  .fs-nav-links {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    padding-top: var(--fs-space-2xs);
-  }
-
-  .fs-nav-actions {
-    margin-left: 0;
-  }
-}
-
-/* ---------- Hero / spread ---------- */
-
-.fs-spread {
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-  gap: var(--fs-space-xl);
-  padding-block: var(--fs-space-xl);
-}
-
-@media (min-width: 60rem) {
-  .fs-spread {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--fs-space-2xl);
-  }
-}
-
-.fs-spread-copy {
-  max-width: 34rem;
-}
-
-.fs-hero h1 {
-  font-size: var(--fs-text-h1);
-  letter-spacing: -0.01em;
-}
-
-.fs-hero-lede {
-  font-size: var(--fs-text-lede);
-  color: var(--fs-color-text-muted);
-  margin-top: var(--fs-space-md);
-  max-width: 32rem;
+.fs-hero-lead {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--fs-body);
+  max-width: 520px;
+  margin: 34px 0 0;
 }
 
 .fs-hero-actions {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: var(--fs-space-md);
-  margin-top: var(--fs-space-lg);
+  gap: 22px;
+  margin-top: 42px;
+  flex-wrap: wrap;
 }
 
-.fs-hero-fineprint {
+.fs-hero-meta {
   font-family: var(--fs-font-mono);
-  font-size: 0.8125rem;
-  color: var(--fs-color-ink-faint);
-  letter-spacing: 0.02em;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--fs-muted);
 }
 
-.fs-spread-visual {
+.fs-hero-visual {
   display: flex;
   justify-content: center;
 }
 
-/* ---------- Frame ---------- */
+/* ---------- Frames (drawn device frames) ---------- */
 
 .fs-frame {
   position: relative;
-  max-width: 21rem;
-  width: 100%;
-  padding: var(--fs-space-xs);
-  background: var(--fs-color-surface);
-  border-radius: var(--fs-radius-md);
-  box-shadow: var(--fs-shadow-frame);
-  transform: rotate(-2.5deg);
-  transition: transform var(--fs-transition-lift);
-}
-
-.fs-frame:hover {
-  transform: rotate(-1deg) translateY(-0.25rem);
+  background: var(--fs-bezel);
+  box-sizing: border-box;
 }
 
 .fs-frame img {
-  border-radius: calc(var(--fs-radius-md) - 0.3rem);
+  width: 100%;
+  height: auto;
 }
 
-.fs-frame::before {
-  content: "";
+/* iPhone: hero size */
+.fs-frame-iphone-lg {
+  width: 330px;
+  padding: 8px;
+  border-radius: var(--fs-radius-iphone-wrap);
+  outline: var(--fs-keyline-weight) solid var(--fs-muted);
+  outline-offset: 5px;
+}
+
+.fs-frame-iphone-lg img {
+  border-radius: var(--fs-radius-iphone-inner);
+}
+
+.fs-frame-iphone-lg .fs-island {
   position: absolute;
-  top: -0.9rem;
+  top: 18px;
   left: 50%;
-  width: 4.5rem;
-  height: 1.6rem;
-  background: linear-gradient(
-    100deg,
-    rgba(226, 223, 255, 0.85),
-    rgba(226, 223, 255, 0.55)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  transform: translateX(-50%) rotate(-3deg);
-  box-shadow: 0 0.25rem 0.5rem rgba(36, 31, 74, 0.18);
+  transform: translateX(-50%);
+  width: 90px;
+  height: 27px;
+  border-radius: 14px;
+  background: var(--fs-bezel);
+}
+
+/* iPhone: pair size (smaller) */
+.fs-frame-iphone-sm {
+  width: 100%;
+  padding: 6px;
+  border-radius: var(--fs-radius-iphone-sm-wrap);
+  outline: var(--fs-keyline-weight) solid var(--fs-muted);
+  outline-offset: 4px;
+}
+
+.fs-frame-iphone-sm img {
+  border-radius: var(--fs-radius-iphone-sm-inner);
+}
+
+.fs-frame-iphone-sm .fs-island {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 21px;
+  border-radius: 11px;
+  background: var(--fs-bezel);
+}
+
+/* iPad */
+.fs-frame-ipad {
+  width: 860px;
+  max-width: 100%;
+  padding: 13px;
+  border-radius: var(--fs-radius-ipad-wrap);
+  outline: var(--fs-keyline-weight) solid var(--fs-muted-on-brand);
+  outline-offset: 6px;
+}
+
+.fs-frame-ipad img {
+  border-radius: var(--fs-radius-ipad-inner);
+}
+
+/* ---------- "What you do with it" spread ---------- */
+
+.fs-spread-section {
+  max-width: var(--fs-content-max);
+  margin: 0 auto;
+  padding: 0 var(--fs-side-padding) 110px;
+}
+
+.fs-spread-eyebrow {
+  font-family: var(--fs-font-mono);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--fs-muted);
+  padding: 54px 0 10px;
+}
+
+.fs-spread-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: 72px;
+  align-items: center;
+}
+
+.fs-spread-item {
+  display: flex;
+  gap: 26px;
+  padding: 34px 0;
+  border-bottom: var(--fs-hairline-weight) solid var(--fs-hairline);
+}
+
+.fs-spread-item:last-child {
+  border-bottom: 0;
+}
+
+.fs-spread-item-num {
+  font-family: var(--fs-font-mono);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--fs-interactive);
+  line-height: 1.2;
+  flex: none;
+}
+
+.fs-spread-item-h {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.fs-spread-item-body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--fs-body);
+}
+
+.fs-phones-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+  max-width: 528px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.fs-phones-pair-offset {
+  margin-top: 56px;
+}
+
+/* ---------- iPad section (brand ground) ---------- */
+
+.fs-ipad-section {
+  background: var(--fs-ground-brand);
+  color: var(--fs-bright-on-brand);
+}
+
+.fs-ipad-inner {
+  max-width: var(--fs-content-max);
+  margin: 0 auto;
+  padding: 96px var(--fs-side-padding) 104px;
+}
+
+.fs-h2-brand {
+  margin: 0;
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 680px;
+  color: var(--fs-bright-on-brand);
+}
+
+.fs-ipad-body {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--fs-muted-on-brand);
+  max-width: 560px;
+  margin: 26px 0 0;
+}
+
+.fs-ipad-visual {
+  display: flex;
+  justify-content: center;
+  margin-top: 64px;
+}
+
+/* ---------- Closing section ---------- */
+
+.fs-closing-inner {
+  position: relative;
+  max-width: var(--fs-content-max);
+  margin: 0 auto;
+  padding: 110px var(--fs-side-padding) 130px;
+  text-align: center;
+}
+
+.fs-h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.fs-closing-body {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--fs-body);
+  max-width: 620px;
+  margin: 22px auto 0;
+}
+
+.fs-closing-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 /* ---------- Footer ---------- */
 
 .fs-footer {
-  border-top: 1px solid var(--fs-color-paper-line);
-  background: var(--fs-color-paper-deep);
+  max-width: var(--fs-content-max);
+  margin: 0 auto;
+  padding: 0 var(--fs-side-padding) 44px;
 }
 
-.fs-footer-inner {
+.fs-footer-row {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--fs-space-sm);
-  padding-block: var(--fs-space-xl);
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 30px;
+  flex-wrap: wrap;
 }
 
-.fs-footer-tagline {
+.fs-footer-mugo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fs-muted);
+}
+
+.fs-footer-mugo:hover {
+  color: var(--fs-interactive);
+}
+
+.fs-footer-mugo-mark {
+  width: 20px;
+  height: 20px;
+}
+
+.fs-footer-mugo-label {
   font-family: var(--fs-font-mono);
-  font-size: 0.8125rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--fs-color-ink-faint);
+  font-size: 12px;
+  letter-spacing: 0.16em;
 }
 
 .fs-footer-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--fs-space-md) var(--fs-space-lg);
-  font-size: 0.9375rem;
+  gap: 32px;
+  font-family: var(--fs-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
 }
 
 .fs-footer-links a {
-  color: var(--fs-color-ink-soft);
+  color: var(--fs-muted);
 }
 
-.fs-footer-fine {
-  font-size: 0.8125rem;
-  color: var(--fs-color-ink-faint);
-  margin-top: var(--fs-space-sm);
+.fs-footer-links a:hover {
+  color: var(--fs-interactive);
 }
 
-/* ---------- Motion ---------- */
+.fs-footer-tag {
+  font-family: var(--fs-font-mono);
+  font-size: 12px;
+  color: var(--fs-muted);
+}
+
+/* ---------- Responsive: stack the desktop grids on narrow viewports ---------- */
+
+@media (max-width: 960px) {
+  :root {
+    --fs-side-padding: 32px;
+  }
+
+  .fs-header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .fs-header-actions {
+    gap: 20px;
+  }
+
+  .fs-hero-inner {
+    grid-template-columns: 1fr;
+    padding-top: 56px;
+    padding-bottom: 72px;
+    gap: 48px;
+  }
+
+  .fs-h1 {
+    font-size: 56px;
+  }
+
+  .fs-spread-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .fs-ipad-inner {
+    padding-top: 72px;
+    padding-bottom: 80px;
+  }
+
+  .fs-h2-brand {
+    font-size: 42px;
+  }
+
+  .fs-closing-inner {
+    padding-top: 80px;
+    padding-bottom: 96px;
+  }
+
+  .fs-h2 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --fs-side-padding: 20px;
+  }
+
+  .fs-header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .fs-lang-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+
+  .fs-mugo-lockup {
+    min-height: 44px;
+  }
+
+  .fs-h1 {
+    font-size: 44px;
+  }
+
+  .fs-hero-lead {
+    font-size: 17px;
+  }
+
+  .fs-spread-section {
+    padding-bottom: 72px;
+  }
+
+  .fs-h2-brand {
+    font-size: 32px;
+  }
+
+  .fs-h2 {
+    font-size: 32px;
+  }
+
+  .fs-frame-iphone-lg {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .fs-phones-pair {
+    gap: 16px;
+  }
+
+  .fs-phones-pair-offset {
+    margin-top: 32px;
+  }
+
+  .fs-footer-row {
+    justify-content: flex-start;
+  }
+
+  .fs-footer-links {
+    gap: 20px;
+  }
+
+  .fs-footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 2px;
+  }
+
+  .fs-footer-mugo {
+    min-height: 44px;
+  }
+}
+
+/* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -406,13 +791,5 @@ ul {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .fs-frame {
-    transform: rotate(-2.5deg);
-  }
-
-  .fs-frame:hover {
-    transform: rotate(-2.5deg);
   }
 }
