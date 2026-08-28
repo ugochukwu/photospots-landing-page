@@ -711,6 +711,19 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
     padding-bottom: 16px;
   }
 
+  .fs-lang-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 8px;
+  }
+
+  .fs-mugo-lockup {
+    min-height: 44px;
+  }
+
   .fs-h1 {
     font-size: 44px;
   }
@@ -750,6 +763,17 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 
   .fs-footer-links {
     gap: 20px;
+  }
+
+  .fs-footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 2px;
+  }
+
+  .fs-footer-mugo {
+    min-height: 44px;
   }
 }
 
