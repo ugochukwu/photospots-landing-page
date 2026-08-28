@@ -335,6 +335,15 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
   margin: 0;
 }
 
+/*
+  DE headline sets one point smaller than EN per the design spec (72px vs 76px).
+  :where() keeps this at the same specificity as .fs-h1 so the responsive
+  overrides below still win on narrow viewports for both languages.
+*/
+:where(html[data-lang="de"]) .fs-h1 {
+  font-size: 72px;
+}
+
 .fs-hero-lead {
   font-size: 19px;
   line-height: 1.65;
@@ -440,13 +449,13 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 
 /* ---------- "What you do with it" spread ---------- */
 
-.fs-stanzas-section {
+.fs-spread-section {
   max-width: var(--fs-content-max);
   margin: 0 auto;
   padding: 0 var(--fs-side-padding) 110px;
 }
 
-.fs-stanzas-eyebrow {
+.fs-spread-eyebrow {
   font-family: var(--fs-font-mono);
   font-size: 13px;
   letter-spacing: 0.2em;
@@ -454,25 +463,25 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
   padding: 54px 0 10px;
 }
 
-.fs-stanzas-grid {
+.fs-spread-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
   gap: 72px;
   align-items: center;
 }
 
-.fs-stanza {
+.fs-spread-item {
   display: flex;
   gap: 26px;
   padding: 34px 0;
   border-bottom: var(--fs-hairline-weight) solid var(--fs-hairline);
 }
 
-.fs-stanza:last-child {
+.fs-spread-item:last-child {
   border-bottom: 0;
 }
 
-.fs-stanza-num {
+.fs-spread-item-num {
   font-family: var(--fs-font-mono);
   font-size: 26px;
   font-weight: 700;
@@ -481,14 +490,14 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
   flex: none;
 }
 
-.fs-stanza-h {
+.fs-spread-item-h {
   margin: 0 0 10px;
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.015em;
 }
 
-.fs-stanza-body {
+.fs-spread-item-body {
   margin: 0;
   font-size: 16px;
   line-height: 1.6;
@@ -668,7 +677,7 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
     font-size: 56px;
   }
 
-  .fs-stanzas-grid {
+  .fs-spread-grid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
@@ -710,7 +719,7 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
     font-size: 17px;
   }
 
-  .fs-stanzas-section {
+  .fs-spread-section {
     padding-bottom: 72px;
   }
 
