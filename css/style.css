@@ -786,6 +786,66 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
   flex-wrap: wrap;
 }
 
+/* ---------- 404 (not-found) page ---------- */
+
+.fs-404 {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.fs-404-inner {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.fs-404-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.fs-404-eyebrow {
+  margin-top: 34px;
+}
+
+.fs-404-rule {
+  width: 180px;
+  height: var(--fs-hairline-weight);
+  background: var(--fs-hairline);
+  margin: 28px auto 34px;
+  border: 0;
+}
+
+.fs-404-h1 {
+  font-weight: 700;
+  font-size: 52px;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+
+.fs-404-body {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--fs-body);
+  margin: 24px 0 0;
+}
+
+.fs-404-cta {
+  margin-top: 34px;
+}
+
+.fs-404-cta a {
+  font-weight: 700;
+  font-size: 16px;
+}
+
 /* ---------- Responsive: stack the desktop grids on narrow viewports ---------- */
 
 @media (max-width: 960px) {
@@ -841,6 +901,10 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 
   .fs-h1-page {
     font-size: 40px;
+  }
+
+  .fs-404-h1 {
+    font-size: 42px;
   }
 }
 
@@ -942,6 +1006,26 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 
   .fs-footer-mugo {
     min-height: 44px;
+  }
+
+  .fs-404 {
+    padding: 20px;
+  }
+
+  .fs-404-h1 {
+    font-size: 34px;
+  }
+
+  .fs-404-body {
+    font-size: 16px;
+  }
+
+  .fs-404-cta a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 4px;
   }
 }
 
