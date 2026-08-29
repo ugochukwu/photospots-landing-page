@@ -86,3 +86,12 @@ locally before trusting the check, per the kit's usual practice:
 
 - **Docs index** — the generated list in `docs/README.md` is built from each doc's frontmatter.
   Regenerate with `scripts/gen-doc-index` after adding or renaming a doc under `docs/`.
+- **Frame WebPs** (`assets/shots/*.webp`) — one self-contained "device with app on screen"
+  image per slot: a raw app capture from the Fotospots app repo
+  (`/Users/michelonwordi/Dev/Fotospots/docs/product/app-store-listing/screenshots/raw/`, under
+  `iphone-6.9/` and `ipad-13/`) resized to a fixed 2x inner-screen width and composited onto a
+  dark bezel with rounded outer and inner corners. Rebuild them with `python3
+  scripts/build-shots.py` (or `./scripts/build-shots.py`) whenever the app team refreshes those
+  raw captures, or override the source root with `--raws /path/to/raws` /
+  `FOTOSPOTS_RAWS=/path/to/raws`. The CSS keyline outline around each Frame stays in the
+  stylesheet, so the script never bakes it in.
