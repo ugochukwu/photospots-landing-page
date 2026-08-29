@@ -648,6 +648,144 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
   color: var(--fs-muted);
 }
 
+/* ---------- Page header (simple inner-page chrome: privacy policy, 404) ---------- */
+
+.fs-page-header {
+  max-width: var(--fs-content-max-narrow);
+  margin: 0 auto;
+  padding: 26px var(--fs-side-padding-narrow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.fs-page-header-lockup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--fs-ink);
+}
+
+.fs-page-header-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--fs-radius-icon);
+}
+
+.fs-page-wordmark {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+
+.fs-back-link {
+  font-family: var(--fs-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--fs-muted);
+}
+
+.fs-back-link:hover {
+  color: var(--fs-interactive);
+}
+
+.fs-page-header-hairline-wrap {
+  max-width: var(--fs-content-max-narrow);
+  margin: 0 auto;
+  padding: 0 var(--fs-side-padding-narrow);
+}
+
+/* ---------- Privacy policy main column ---------- */
+
+.fs-privacy-main {
+  max-width: var(--fs-content-max-narrow);
+  margin: 0 auto;
+  padding: 64px var(--fs-side-padding-narrow) 100px;
+  box-sizing: border-box;
+}
+
+/* ---------- Page intro (eyebrow + headline + lead, inner pages) ---------- */
+
+.fs-h1-page {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin: 26px 0 0;
+}
+
+.fs-lead-page {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--fs-body);
+  max-width: 640px;
+  margin: 24px 0 0;
+}
+
+/* ---------- Numbered list (hairline-separated disclosure items, privacy policy) ---------- */
+
+.fs-numbered-list {
+  margin-top: 30px;
+}
+
+.fs-numbered-item {
+  display: flex;
+  gap: 26px;
+  padding: 34px 0;
+  border-bottom: var(--fs-hairline-weight) solid var(--fs-hairline);
+}
+
+.fs-numbered-item:last-child {
+  border-bottom: 0;
+}
+
+.fs-numbered-item-first {
+  padding-top: 44px;
+  border-top: var(--fs-hairline-weight) solid var(--fs-hairline);
+}
+
+.fs-numbered-item-marker {
+  font-family: var(--fs-font-mono);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--fs-interactive);
+  line-height: 1.2;
+  flex: none;
+}
+
+.fs-numbered-item-title {
+  margin: 0 0 10px;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.fs-numbered-item-body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--fs-body);
+  max-width: 620px;
+}
+
+/* ---------- Page footer (simple inner-page chrome: privacy policy, 404) ---------- */
+
+.fs-page-footer {
+  max-width: var(--fs-content-max-narrow);
+  margin: 0 auto;
+  padding: 0 var(--fs-side-padding-narrow) 40px;
+}
+
+.fs-page-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 26px;
+  flex-wrap: wrap;
+}
+
 /* ---------- 404 (not-found) page ---------- */
 
 .fs-404 {
@@ -713,6 +851,7 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 @media (max-width: 960px) {
   :root {
     --fs-side-padding: 32px;
+    --fs-side-padding-narrow: 32px;
   }
 
   .fs-header {
@@ -760,6 +899,10 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
     font-size: 38px;
   }
 
+  .fs-h1-page {
+    font-size: 40px;
+  }
+
   .fs-404-h1 {
     font-size: 42px;
   }
@@ -768,6 +911,7 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 @media (max-width: 480px) {
   :root {
     --fs-side-padding: 20px;
+    --fs-side-padding-narrow: 20px;
   }
 
   .fs-header {
@@ -790,6 +934,30 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 
   .fs-h1 {
     font-size: 44px;
+  }
+
+  .fs-page-header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .fs-page-header-lockup,
+  .fs-back-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .fs-h1-page {
+    font-size: 32px;
+  }
+
+  .fs-lead-page {
+    font-size: 17px;
+  }
+
+  .fs-numbered-item {
+    gap: 16px;
   }
 
   .fs-hero-lead {
