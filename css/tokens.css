@@ -13,8 +13,6 @@
   /* Cream page ground and the sole brand-moment ground (iPad section). */
   --fs-ground: #F6F2EA;
   --fs-ground-brand: #4F489B;
-  /* Bezel double-duty as headline ink on cream. */
-  --fs-bezel: #2A2620;
 
   /* ---------- Text on cream ---------- */
   --fs-ink: #2A2620;
@@ -39,15 +37,16 @@
   --fs-font-body: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
   --fs-font-mono: "Space Mono", ui-monospace, "SFMono-Regular", "Menlo", monospace;
 
-  /* ---------- Radii ---------- */
+  /* ---------- Radii ----------
+     The iphone/ipad wrap radii shape the CSS `outline` that wraps each
+     screenshot slot (.fs-shot-*). The matching inner radii used to shape a
+     CSS-drawn screen mask are now baked directly into the WebP assets, so
+     no CSS consumer of --fs-radius-*-inner remains. */
   --fs-radius-btn: 6px;
   --fs-radius-icon: 8px;
   --fs-radius-iphone-wrap: 46px;
-  --fs-radius-iphone-inner: 38px;
   --fs-radius-iphone-sm-wrap: 36px;
-  --fs-radius-iphone-sm-inner: 30px;
   --fs-radius-ipad-wrap: 34px;
-  --fs-radius-ipad-inner: 22px;
 
   /* ---------- Layout ---------- */
   --fs-content-max: 1200px;
