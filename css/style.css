@@ -372,79 +372,47 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
   justify-content: center;
 }
 
-/* ---------- Frames (drawn device frames) ---------- */
+/* ---------- Frames (baked bezel + rounded corners; CSS supplies the keyline outline) ---------- */
 
-.fs-frame {
-  position: relative;
-  background: var(--fs-bezel);
-  box-sizing: border-box;
-}
+/*
+  The screenshot slots (fs-shot-*) render a self-contained "device with app
+  on screen" image: the raw full-screen capture is composited into a bezel
+  with rounded outer and inner corners, saved as WebP. All that CSS still
+  supplies is the 1.5px keyline outline that today's shipped design draws
+  around each device — CSS `outline` sits outside the layout box, so leaving
+  it in CSS (rather than baking it into a larger image) keeps every Frame's
+  layout footprint identical to the shipped page. `border-radius` on the img
+  is what shapes the outline to hug the bezel; the img itself has no visible
+  rectangular edge because the bezel corners are baked into the alpha.
+*/
 
-.fs-frame img {
-  width: 100%;
+.fs-shot-iphone-lg,
+.fs-shot-iphone-sm,
+.fs-shot-ipad {
+  display: block;
   height: auto;
 }
 
-/* iPhone: hero size */
-.fs-frame-iphone-lg {
+.fs-shot-iphone-lg {
   width: 330px;
-  padding: 8px;
   border-radius: var(--fs-radius-iphone-wrap);
   outline: var(--fs-keyline-weight) solid var(--fs-muted);
   outline-offset: 5px;
 }
 
-.fs-frame-iphone-lg img {
-  border-radius: var(--fs-radius-iphone-inner);
-}
-
-.fs-frame-iphone-lg .fs-island {
-  position: absolute;
-  top: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 27px;
-  border-radius: 14px;
-  background: var(--fs-bezel);
-}
-
-/* iPhone: pair size (smaller) */
-.fs-frame-iphone-sm {
+.fs-shot-iphone-sm {
   width: 100%;
-  padding: 6px;
   border-radius: var(--fs-radius-iphone-sm-wrap);
   outline: var(--fs-keyline-weight) solid var(--fs-muted);
   outline-offset: 4px;
 }
 
-.fs-frame-iphone-sm img {
-  border-radius: var(--fs-radius-iphone-sm-inner);
-}
-
-.fs-frame-iphone-sm .fs-island {
-  position: absolute;
-  top: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 68px;
-  height: 21px;
-  border-radius: 11px;
-  background: var(--fs-bezel);
-}
-
-/* iPad */
-.fs-frame-ipad {
+.fs-shot-ipad {
   width: 860px;
   max-width: 100%;
-  padding: 13px;
   border-radius: var(--fs-radius-ipad-wrap);
   outline: var(--fs-keyline-weight) solid var(--fs-muted-on-brand);
   outline-offset: 6px;
-}
-
-.fs-frame-ipad img {
-  border-radius: var(--fs-radius-ipad-inner);
 }
 
 /* ---------- "What you do with it" spread ---------- */
@@ -976,7 +944,7 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
     font-size: 32px;
   }
 
-  .fs-frame-iphone-lg {
+  .fs-shot-iphone-lg {
     width: 100%;
     max-width: 300px;
   }
