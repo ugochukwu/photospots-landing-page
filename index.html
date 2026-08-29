@@ -39,6 +39,15 @@
 
     <link rel="stylesheet" href="css/tokens.css">
     <link rel="stylesheet" href="css/style.css">
+    <!--
+      Without JS, the .fs-shot placeholder (an inert 1x1 GIF) never gets a
+      real src, but .fs-frame img { width: 100%; height: auto } would still
+      size it to a full-width square from its 1:1 intrinsic ratio, stacking a
+      blank square above each slot's noscript fallback image. This noscript
+      style (parsed only when scripting is off, so it never affects the
+      scripted path) hides that placeholder so only the fallback renders.
+    -->
+    <noscript><style>.fs-shot { display: none; }</style></noscript>
   </head>
   <body>
     <a class="fs-visually-hidden" href="#main">
@@ -107,6 +116,7 @@
           <div class="fs-hero-visual">
             <div class="fs-frame fs-frame-iphone-lg">
               <img class="fs-shot" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src-en="assets/shots/i1-en.webp" data-src-de="assets/shots/i1-de.webp" data-alt-en="Fotospots map of your own pins" data-alt-de="Fotospots Karte mit deinen eigenen Pins" alt="Fotospots map of your own pins">
+              <noscript><img src="assets/shots/i1-en.webp" alt="Fotospots map of your own pins"></noscript>
               <div class="fs-island" aria-hidden="true"></div>
             </div>
           </div>
@@ -164,10 +174,12 @@
           <div class="fs-phones-pair">
             <div class="fs-frame fs-frame-iphone-sm fs-phones-pair-offset">
               <img class="fs-shot" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src-en="assets/shots/i3-en.webp" data-src-de="assets/shots/i3-de.webp" data-alt-en="Capture: pick the photo, place and hour come with it" data-alt-de="Aufnehmen: Du wählst das Foto, Ort und Uhrzeit kommen mit" alt="Capture: pick the photo, place and hour come with it">
+              <noscript><img src="assets/shots/i3-en.webp" alt="Capture: pick the photo, place and hour come with it"></noscript>
               <div class="fs-island" aria-hidden="true"></div>
             </div>
             <div class="fs-frame fs-frame-iphone-sm">
               <img class="fs-shot" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src-en="assets/shots/i6-en.webp" data-src-de="assets/shots/i6-de.webp" data-alt-en="Wishlist: the ones you still want to" data-alt-de="Merkliste: wo du noch stehen willst" alt="Wishlist: the ones you still want to">
+              <noscript><img src="assets/shots/i6-en.webp" alt="Wishlist: the ones you still want to"></noscript>
               <div class="fs-island" aria-hidden="true"></div>
             </div>
           </div>
@@ -192,6 +204,7 @@
           <div class="fs-ipad-visual">
             <div class="fs-frame fs-frame-ipad">
               <img class="fs-shot" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" data-src-en="assets/shots/p2-en.webp" data-src-de="assets/shots/p2-de.webp" data-alt-en="iPad: full-width map with the spot docked along the edge" data-alt-de="iPad: Karte in voller Breite, Fotospot am Rand angedockt" alt="iPad: full-width map with the spot docked along the edge">
+              <noscript><img src="assets/shots/p2-en.webp" alt="iPad: full-width map with the spot docked along the edge"></noscript>
             </div>
           </div>
         </div>
