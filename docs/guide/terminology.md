@@ -59,8 +59,12 @@ it here in the same change rather than inventing an ad-hoc name.
 - **Spread** — a two-column section pairing a statement/body with a phone or iPad screenshot,
   alternating sides down the page (named for a book's two facing pages, matching the
   "fieldbook" concept). Used in CSS class names (`fs-spread`) and section comments.
-- **Frame** — the tilted, washi-tape-cornered mockup that holds a screenshot (`fs-frame` in
-  CSS). Not "mockup" or "device frame" in code, to keep one name for one thing.
+- **Frame** — a flat rendered device bezel (dark `#2A2620`, rounded corners) around the app
+  screen, with a thin muted-color keyline outline offset a few pixels outward. The Dynamic
+  Island is baked into the iPhone raws where applicable. Named with the `fs-shot` family in
+  the shipped source: `fs-shot` as the base marker in markup, plus size variants
+  `fs-shot-iphone-lg`, `fs-shot-iphone-sm`, and `fs-shot-ipad` that carry the CSS rules. Not
+  "mockup" or "device frame" in code, to keep one name for one thing.
 
 ## Deprecated — do not use
 
