@@ -33,6 +33,16 @@ Pages/DNS reconfiguration to replace the site's content.
   serves every file as-is.
 - `CNAME` — must keep containing `www.photospots.net` (GitHub Pages reads this file to serve
   the custom domain; deleting or changing it breaks the live domain).
+- `.well-known/apple-app-site-association` — **required**, extension-less, at the repo root.
+  The server-side half of iOS Universal Links: Apple's CDN fetches this file directly from the
+  entitled apex `photospots.net` (no redirects allowed — it must return HTTP 200 at that exact
+  hostname) and the iOS system uses its `applinks` component matchers to decide which URLs open
+  the Fotospots app instead of Safari. The app-side half (the Associated Domains entitlement and
+  the share-link codec) lives in the Fotospots app repo (beads Fotospots-jya.2 and
+  Fotospots-jya.4). GitHub Pages serves the file (and the dot-prefixed `.well-known/` folder)
+  verbatim because `.nojekyll` at the root disables Jekyll — otherwise Jekyll would drop
+  dot-prefixed folders. Apple's CDN caches the file: edits normally take minutes to hours, and
+  occasionally up to 24h, to propagate, so plan any coordinated launch with slack.
 
 The one toolchain dependency is Node, used only to run the lint step below via `npx` — pinned
 as a `devDependency` in `package.json` so `npm ci` gives every agent and CI run the same
