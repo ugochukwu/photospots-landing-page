@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["Y8DRDY6YD8.com.michelonwordi.mugoapps.photospots.Photospots"],
+        "components": [
+          { "/": "/s/*", "comment": "Photospots shareable spot links (current, ADR-0005 private transport)" },
+          { "/": "/share/*", "comment": "Photospots shareable spot links (legacy ShareLinkCoordinator path)" }
+        ]
+      }
+    ]
+  }
+}
