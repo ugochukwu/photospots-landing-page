@@ -780,36 +780,18 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
   text-align: center;
 }
 
-.fs-404-map {
+.fs-404-icon {
   display: block;
-  width: 100%;
-  max-width: 260px;
-  height: auto;
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
   margin: 0 auto;
-}
-
-.fs-404-map-trail {
-  stroke: var(--fs-muted);
-  stroke-width: 1.5;
-  stroke-dasharray: 3 6;
-  opacity: 0.75;
-}
-
-.fs-404-map-pin-body {
-  fill: var(--fs-pin-red);
-}
-
-.fs-404-map-pin-dot {
-  fill: var(--fs-interactive);
-}
-
-.fs-404-map-pin-shadow {
-  fill: var(--fs-ink);
-  opacity: 0.12;
+  /* Radius scales proportionally with the icon (44px used r10;
+     88px uses r20) to preserve the original squircle silhouette. */
 }
 
 .fs-404-eyebrow {
-  margin-top: 28px;
+  margin-top: 34px;
 }
 
 .fs-404-coords {
