@@ -273,7 +273,7 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.13;
+  opacity: 0.24;
   pointer-events: none;
 }
 
@@ -756,6 +756,15 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 
 /* ---------- 404 (not-found) page ---------- */
 
+/* The 404 has no header, so the language toggle floats top-right of the
+   viewport, matching the top-right anchor it takes in the index header. */
+.fs-404-lang {
+  position: absolute;
+  top: 26px;
+  right: var(--fs-side-padding);
+  z-index: 1;
+}
+
 .fs-404 {
   min-height: 100vh;
   display: flex;
@@ -772,14 +781,25 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 }
 
 .fs-404-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 10px;
+  display: block;
+  width: 88px;
+  height: 88px;
+  border-radius: 20px;
   margin: 0 auto;
+  /* Radius scales proportionally with the icon (44px used r10;
+     88px uses r20) to preserve the original squircle silhouette. */
 }
 
 .fs-404-eyebrow {
   margin-top: 34px;
+}
+
+.fs-404-coords {
+  font-family: var(--fs-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--fs-muted);
+  margin-top: 10px;
 }
 
 .fs-404-rule {

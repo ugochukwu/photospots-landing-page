@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,19 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 
+    <script>
+      (function () {
+        var lang = 'en';
+        try {
+          var saved = localStorage.getItem('photospots-lang');
+          if (saved === 'en' || saved === 'de') lang = saved;
+        } catch (e) {}
+        var root = document.documentElement;
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang);
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Space+Mono:wght@400;700&amp;display=swap">
@@ -20,26 +33,57 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <div class="fs-404-lang">
+      <div class="fs-lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="fs-lang-btn" data-lang="en" aria-label="English">EN</button>
+        <button type="button" class="fs-lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+      </div>
+    </div>
     <main class="fs-404 fs-topo-section">
       <svg class="fs-topo" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <g class="fs-topo-group" stroke-width="1.5">
+          <path d="M -60 140 C 400 100 760 180 1500 120"></path>
           <path d="M -60 200 C 400 160 760 240 1500 180"></path>
           <path d="M -60 260 C 400 212 760 308 1500 236"></path>
           <path d="M -60 320 C 400 264 760 376 1500 292"></path>
+          <path d="M -60 380 C 400 322 760 436 1500 348"></path>
+          <path d="M -60 440 C 400 386 760 498 1500 410"></path>
+          <path d="M -60 600 C 460 644 830 556 1500 622"></path>
           <path d="M -60 660 C 460 704 830 616 1500 682"></path>
           <path d="M -60 730 C 460 768 830 692 1500 749"></path>
+          <path d="M -60 800 C 460 832 830 760 1500 812"></path>
         </g>
       </svg>
       <div class="fs-404-inner">
-        <img class="fs-404-icon" src="assets/app-icon.png" width="44" height="44" alt="Fotospots app icon">
-        <div class="fs-eyebrow fs-404-eyebrow">404 // OFF THE MAP</div>
+        <img class="fs-404-icon" src="assets/app-icon.png" width="88" height="88" alt="Fotospots app icon">
+        <div class="fs-eyebrow fs-404-eyebrow"><span class="fs-l-en">404 // OFF THE MAP</span><span class="fs-l-de">404 // ABSEITS DER KARTE</span></div>
+        <div class="fs-404-coords"><span class="fs-l-en">NO COORDINATES FOUND</span><span class="fs-l-de">KEINE KOORDINATEN GEFUNDEN</span></div>
         <hr class="fs-404-rule">
-        <h1 class="fs-404-h1">Nothing pinned here.</h1>
-        <p class="fs-404-body">The page you were looking for is not on this map. Hier ist nichts markiert.</p>
+        <h1 class="fs-404-h1"><span class="fs-l-en">Nothing pinned here.</span><span class="fs-l-de">Nichts angeheftet.</span></h1>
+        <p class="fs-404-body">
+          <span class="fs-l-en">The page you were looking for is not on this map.</span>
+          <span class="fs-l-de">Hier ist nichts markiert.</span>
+        </p>
         <div class="fs-404-cta">
-          <a href="/">Back to the start →</a>
+          <a href="/"><span class="fs-l-en">Back to the start →</span><span class="fs-l-de">Zurück zum Anfang →</span></a>
         </div>
       </div>
     </main>
+
+    <script>
+      (function () {
+        var buttons = document.querySelectorAll('.fs-lang-btn');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener('click', function (event) {
+            var next = event.currentTarget.getAttribute('data-lang');
+            if (next !== 'en' && next !== 'de') return;
+            var root = document.documentElement;
+            root.setAttribute('data-lang', next);
+            root.setAttribute('lang', next);
+            try { localStorage.setItem('photospots-lang', next); } catch (e) {}
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
