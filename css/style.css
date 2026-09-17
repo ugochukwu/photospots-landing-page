@@ -800,7 +800,7 @@ html[data-lang="de"] .fs-lang-btn[data-lang="de"] {
 }
 
 .fs-404-map-pin-dot {
-  fill: var(--fs-ground);
+  fill: var(--fs-interactive);
 }
 
 .fs-404-map-pin-shadow {
