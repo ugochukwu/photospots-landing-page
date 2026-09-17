@@ -30,6 +30,13 @@
   --fs-interactive-hover: #5E55B5;
   --fs-link-hover: #665DBE;
 
+  /* ---------- Pin red ----------
+     Sampled from the shipped app icon (assets/app-icon.png); the pin
+     cluster's most-populous swatch. Used by the 404 map-pin fill so
+     the pin reads as the Fotospots app pin, not a violet interactive
+     accent. */
+  --fs-pin-red: #B61E1E;
+
   /* ---------- Mugo works mark on cream ---------- */
   --fs-mark-ink-on-light: #1E4D30;
 

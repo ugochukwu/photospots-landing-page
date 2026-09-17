@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +12,19 @@
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 
+    <script>
+      (function () {
+        var lang = 'en';
+        try {
+          var saved = localStorage.getItem('photospots-lang');
+          if (saved === 'en' || saved === 'de') lang = saved;
+        } catch (e) {}
+        var root = document.documentElement;
+        root.setAttribute('data-lang', lang);
+        root.setAttribute('lang', lang);
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=Space+Mono:wght@400;700&amp;display=swap">
@@ -20,6 +33,12 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+    <div class="fs-404-lang">
+      <div class="fs-lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="fs-lang-btn" data-lang="en" aria-label="English">EN</button>
+        <button type="button" class="fs-lang-btn" data-lang="de" aria-label="Deutsch">DE</button>
+      </div>
+    </div>
     <main class="fs-404 fs-topo-section">
       <svg class="fs-topo" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true" focusable="false">
         <g class="fs-topo-group" stroke-width="1.5">
@@ -52,11 +71,30 @@
         <div class="fs-404-coords">NO COORDINATES FOUND</div>
         <hr class="fs-404-rule">
         <h1 class="fs-404-h1">Nothing pinned here.</h1>
-        <p class="fs-404-body">The page you were looking for is not on this map. Hier ist nichts markiert.</p>
+        <p class="fs-404-body">
+          <span class="fs-l-en">The page you were looking for is not on this map.</span>
+          <span class="fs-l-de">Hier ist nichts markiert.</span>
+        </p>
         <div class="fs-404-cta">
           <a href="/">Back to the start →</a>
         </div>
       </div>
     </main>
+
+    <script>
+      (function () {
+        var buttons = document.querySelectorAll('.fs-lang-btn');
+        for (var i = 0; i < buttons.length; i++) {
+          buttons[i].addEventListener('click', function (event) {
+            var next = event.currentTarget.getAttribute('data-lang');
+            if (next !== 'en' && next !== 'de') return;
+            var root = document.documentElement;
+            root.setAttribute('data-lang', next);
+            root.setAttribute('lang', next);
+            try { localStorage.setItem('photospots-lang', next); } catch (e) {}
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
