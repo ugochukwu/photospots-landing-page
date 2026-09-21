@@ -54,3 +54,6 @@
   for = "/.well-known/apple-app-site-association"
   [headers.values]
     Content-Type = "application/json"
+
+# Redeploy marker: forces a Netlify deploy preview build so the served AASA
+# content type can be verified in the cloud. No behavior change.
