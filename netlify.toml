@@ -1,0 +1,56 @@
+# netlify.toml: hosting config for photospots.net on Netlify.
+#
+# This site is a plain static site with no build step (see docs/adapters/stack.md).
+# Netlify publishes the repository root exactly as it is committed, the same set of
+# files GitHub Pages serves today. There is no `command`, so Netlify runs no build.
+#
+# Why Netlify at all: spot share links are photospots.net/s/<token> universal links.
+# With the app installed, iOS opens the app. Without it, the browser loads /s/<token>,
+# a path with no matching static file. GitHub Pages returns 404 for such a path, so
+# WhatsApp and other crawlers get no page and show no link preview. Netlify can serve
+# a real 200 for those paths via a rewrite, which is what the redirect rules below do.
+# See docs/adr/2026-09-21-netlify-hosting-spot-blind-landing.md.
+
+[build]
+  # Publish the repo root verbatim. No build, no bundler, no framework.
+  publish = "."
+
+# --- Apple App Site Association: never redirected, served as JSON ---------------
+#
+# Apple's CDN fetches https://<host>/.well-known/apple-app-site-association directly
+# and requires HTTP 200 with no redirect. This self-referential 200 rewrite (force is
+# false by default, so the real file on disk is served) documents and pins the intent
+# that nothing under /.well-known/* is ever rewritten to another path or redirected.
+# It is placed first so no later rule can claim these paths.
+#
+# NOTE (verify after the site is connected): this file cannot disable Netlify's
+# domain-level primary-domain redirect (the automatic 301 from a non-primary host to
+# the primary host). That redirect, if it applies to the apex, would break Apple's
+# no-redirect requirement for the AASA. See the ADR's top risk and the PR checklist.
+[[redirects]]
+  from = "/.well-known/*"
+  to = "/.well-known/:splat"
+  status = 200
+
+# --- Spot-blind landing for share links -----------------------------------------
+#
+# status = 200 makes these rewrites, not redirects: the browser URL stays
+# /s/<token> (or /share/<token>) while Netlify serves the contents of /s.html. The
+# landing is spot-blind by design: it never reads the token or the ?u parameter and
+# shows no per-spot data. The private handoff happens on the device, not on this page.
+[[redirects]]
+  from = "/s/*"
+  to = "/s.html"
+  status = 200
+
+[[redirects]]
+  from = "/share/*"
+  to = "/s.html"
+  status = 200
+
+# The AASA file has no extension, so Netlify would not infer a content type. Apple
+# requires application/json. This header sets it explicitly on that one path.
+[[headers]]
+  for = "/.well-known/apple-app-site-association"
+  [headers.values]
+    Content-Type = "application/json"

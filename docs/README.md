@@ -30,6 +30,7 @@ renaming a doc.
 
 ### adr/
 
+- [ADR-0001: Netlify hosting and a spot-blind 200 landing at /s/](adr/2026-09-21-netlify-hosting-spot-blind-landing.md) — Move photospots.net from GitHub Pages to Netlify so share paths can return HTTP 200, and serve one spot-blind static landing at /s/* and /share/* via a Netlify rewrite.
 - [ADR index & conventions](adr/README.md) — Index of architecture decision records and the one-file-per-decision / supersede-not-edit conventions.
 
 ### design/fieldbook-redesign-2026-08-28/
