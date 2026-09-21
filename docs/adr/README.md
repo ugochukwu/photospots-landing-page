@@ -15,6 +15,7 @@ from the code or re-litigate settled trade-offs.
 
 | # | Date | Title | Status |
 |---|------|-------|--------|
+| [ADR-0001](2026-09-21-netlify-hosting-spot-blind-landing.md) | 2026-09-21 | Netlify hosting and a spot-blind 200 landing at /s/ | Accepted |
 
 <!-- Add a row per ADR, newest at the bottom. -->
 
