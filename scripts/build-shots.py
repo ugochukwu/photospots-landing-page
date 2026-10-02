@@ -5,8 +5,10 @@ Composites the raw app captures shipped by the Fotospots app repo into the
 self-contained "device with app on screen" WebP files that this landing page
 serves as Frames. Each raw is resized to a fixed 2x inner-screen width, given
 rounded inner corners, and pasted onto a dark bezel (#2A2620) that itself
-carries rounded outer corners. The CSS keyline outline around each Frame is
-supplied by the stylesheet, not baked in here.
+carries rounded outer corners. iPhone Frames get the Dynamic Island drawn at
+its hardware geometry, because simulator captures leave it out; iPad Frames get
+the landscape front camera on the top bezel. The CSS keyline outline around
+each Frame is supplied by the stylesheet, not baked in here.
 
 Run this whenever the app team refreshes the raw captures under
 /Users/michelonwordi/Dev/Fotospots/docs/product/app-store-listing/screenshots/raw/.
@@ -53,23 +55,29 @@ class FrameSpec:
     padding: int
     wrap_radius: int
     inner_radius: int
+    device: str
 
 
-# The three Frame classes rendered by css/style.css. Values match the shipped
-# assets/shots/*.webp dimensions at HEAD (i1 660x1396, i3/i6 459x969, p2
-# 1720x1303) when applied to the current raws.
-IPHONE_LG = FrameSpec(inner_w=628, padding=16, wrap_radius=92, inner_radius=76)
-IPHONE_SM = FrameSpec(inner_w=435, padding=12, wrap_radius=72, inner_radius=60)
-IPAD = FrameSpec(inner_w=1668, padding=26, wrap_radius=68, inner_radius=44)
+# The three Frame classes rendered by css/style.css. wrap_radius is double the
+# matching --fs-radius-*-wrap token in css/tokens.css.
+IPHONE_LG = FrameSpec(inner_w=628, padding=16, wrap_radius=92, inner_radius=76, device="iphone")
+IPHONE_SM = FrameSpec(inner_w=435, padding=12, wrap_radius=72, inner_radius=60, device="iphone")
+IPAD = FrameSpec(inner_w=1640, padding=40, wrap_radius=76, inner_radius=40, device="ipad")
+
+# iPhone 17 Pro Max Dynamic Island in a 1320px-wide capture: 376x110, top at 42.
+ISLAND_W, ISLAND_H, ISLAND_TOP, CAPTURE_W = 376, 110, 42, 1320
+ISLAND_COLOR = (0, 0, 0, 0xFF)
+CAMERA_DIAMETER = 12
+CAMERA_COLOR = (0x12, 0x10, 0x0D, 0xFF)
 
 # (slot name, Frame class, raw path relative to the raws root).
 SLOTS: list[tuple[str, FrameSpec, str]] = [
-    ("i1-en", IPHONE_LG, "iphone-6.9/i1-en-light.png"),
-    ("i1-de", IPHONE_LG, "iphone-6.9/i1-de-light.png"),
-    ("i3-en", IPHONE_SM, "iphone-6.9/i3-en-light.png"),
-    ("i3-de", IPHONE_SM, "iphone-6.9/i3-de-light.png"),
-    ("i6-en", IPHONE_SM, "iphone-6.9/i6-en-light.png"),
-    ("i6-de", IPHONE_SM, "iphone-6.9/i6-de-light.png"),
+    ("l1-en", IPHONE_LG, "iphone-6.9/loop/f1-en.png"),
+    ("l1-de", IPHONE_LG, "iphone-6.9/loop/f1-de.png"),
+    ("l2-en", IPHONE_SM, "iphone-6.9/loop/f2-en.png"),
+    ("l2-de", IPHONE_SM, "iphone-6.9/loop/f2-de.png"),
+    ("l3-en", IPHONE_SM, "iphone-6.9/loop/f3-en.png"),
+    ("l3-de", IPHONE_SM, "iphone-6.9/loop/f3-de.png"),
     ("p2-en", IPAD, "ipad-13/p2-en-light.png"),
     ("p2-de", IPAD, "ipad-13/p2-de-light.png"),
 ]
@@ -78,6 +86,8 @@ SLOTS: list[tuple[str, FrameSpec, str]] = [
 def build_frame(raw_path: Path, spec: FrameSpec) -> Image.Image:
     """Resize the raw and composite it onto the bezel per one FrameSpec."""
     raw = Image.open(raw_path).convert("RGBA")
+    if spec.device == "iphone":
+        draw_island(raw)
 
     inner_w = spec.inner_w
     inner_h = round(raw.height * inner_w / raw.width)
@@ -107,7 +117,20 @@ def build_frame(raw_path: Path, spec: FrameSpec) -> Image.Image:
     )
 
     frame.paste(screen, (spec.padding, spec.padding), screen)
+    if spec.device == "ipad":
+        cx, cy, r = outer_w / 2, spec.padding / 2, CAMERA_DIAMETER / 2
+        ImageDraw.Draw(frame).ellipse((cx - r, cy - r, cx + r, cy + r), fill=CAMERA_COLOR)
     return frame
+
+
+def draw_island(raw: Image.Image) -> None:
+    """Draw the Dynamic Island onto a full-resolution capture, in place."""
+    scale = raw.width / CAPTURE_W
+    w, h, top = ISLAND_W * scale, ISLAND_H * scale, ISLAND_TOP * scale
+    left = (raw.width - w) / 2
+    ImageDraw.Draw(raw).rounded_rectangle(
+        (left, top, left + w, top + h), radius=h / 2, fill=ISLAND_COLOR
+    )
 
 
 def main(argv: list[str] | None = None) -> int:
